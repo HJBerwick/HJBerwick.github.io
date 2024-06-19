@@ -25,7 +25,7 @@ avatar_image: /img/profile_picture_square_colour.jpg
 linkedln: "https://www.linkedin.com/in/henry-berwick/"
 github: "https://github.com/HJBerwick"
 
-paginate: 6
+paginate: 12
 paginate_path: "/page/:num"
 
 sass:
