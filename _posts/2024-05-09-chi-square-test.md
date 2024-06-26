@@ -52,9 +52,9 @@ From the data provided by the client, we can use the *campaign_data* table to se
 
 We can then set out our hypotheses and Acceptance Criteria for the test:
 
-**Null Hypothesis:** There is no relationship between mailer type and signup rate. They are independent.
-**Alternate Hypothesis:** There is a relationship between mailer type and signup rate. They are not independent.
-**Acceptance Criteria:** 0.05
+* **Null Hypothesis:** There is no relationship between mailer type and signup rate. They are independent.
+* **Alternate Hypothesis:** There is a relationship between mailer type and signup rate. They are not independent.
+* **Acceptance Criteria:** 0.05
 
 To meet the requirements of the Chi-Square Test For Independence, we aggregated this data down to a 2x2 matrix for *signup_flag* by *mailer_type*. We can then feed this into the algorithm (using the *scipy* library) to calculate the Chi-Square Statistic, p-value, Degrees of Freedom, and expected values.
 
@@ -96,7 +96,7 @@ ___
 
 An A/B Test can be described as a randomised experiment containing two groups, A & B, that receive different experiences. Within an A/B Test, we look to understand and measure the response of each group - and the information from this helps drive future business decisions.
 
-Application of A/B testing can range from testing different online ad strategies, different email subject lines when contacting customers, or testing the effect of mailing customers a coupon, vs a control group. Companies like Amazon are running these tests in an almost never-ending cycle, testing new website features on randomised groups of customers, all with the aim of finding what works best so they can stay ahead of their competition. Reportedly, Netflix will even test different images for the same movie or show, to different segments of their customer base to see if certain images pull more viewers in.
+Applications of A/B testing can range from testing different online ad strategies, different email subject lines when contacting customers, or testing the effect of mailing customers a coupon, vs a control group. Companies like Amazon are running these tests in an almost never-ending cycle, testing new website features on randomised groups of customers, all with the aim of finding what works best so they can stay ahead of their competition. Reportedly, Netflix will even test different images for the same film or TV series, to different segments of their customer base, to see if certain images pull more viewers in.
 
 <br>
 
@@ -142,7 +142,7 @@ In the case of our task here, where we are looking to understand the difference 
 
 The Chi-Square Test For Independence is a type of Hypothesis Test that assumes observed frequencies for categorical variables will match the expected frequencies.
 
-The *assumption* is the Null Hypothesis, which, as discussed above, is always the viewpoint that the two groups will be equal. With the Chi-Square Test For Independence we look to calculate a statistic which, based on the specified Acceptance Criteria will mean we either reject or support this initial assumption.
+The *assumption* is that the Null Hypothesis is, as discussed above, always the viewpoint that the two groups will be equal. With the Chi-Square Test For Independence we look to calculate a statistic which, based on the specified Acceptance Criteria, will mean we either reject or support this initial assumption.
 
 The *observed frequencies* are the true values that we’ve seen.
 
@@ -224,7 +224,7 @@ ___
 
 To kick off our Hypothesis Test, we first need to make sure we have clearly stated our Null Hypothesis, Alternate Hypothesis, and the Acceptance Criteria as described in the section above.
 
-We will code these in explcitly & clearly so we can utilise them later to explain the results. We specify the common Acceptance Criteria value of 0.05.
+We will code these in explcitly and clearly so we can utilise them later to explain the results. We specify the common Acceptance Criteria value of 0.05.
 
 ```python
 
@@ -283,11 +283,11 @@ Taking the observed values, we can calculate the signup rate of each group:
 * Mailer 1 (low cost, low quality): **32.8%** signup rate
 * Mailer 2 (high cost, high quality): **37.8%** signup rate
 
-These observed values suggest that the higher cost/quality of Mailer 2 does positively impact the signup rate for the Delivery Club. However, only once we have performed the Chi-Square Test for Independence will be able to better understand how confidently we can say that this conclusion is robust, or whether it may have occurred by chance.
+These observed values suggest that the higher cost/quality of Mailer 2 does positively impact the signup rate for the Delivery Club. However, only once we have performed the Chi-Square Test for Independence will we be able to better understand how confidently we can say that this conclusion is robust, or whether it may have occurred by chance.
 
 After applying the test, we have a Chi-Square Statistic of **1.94** and a p-value of **0.16**.  The critical value for our specified Acceptance Criteria of 0.05 can be calculated as **3.84**.
 
-**Note:** When applying the Chi-Square Test above, we use the parameter *correction = False* which means we are applying what is known as the *Yate's Correction* which is applied when your Degrees of Freedom is equal to one. This correction helps to prevent overestimation of statistical signficance in this case.
+**Note:** When applying the Chi-Square Test above, we use the parameter *correction = False* which means we are applying what is known as the *Yate's Correction*, which is applied when your Degrees of Freedom is equal to one. This correction helps to prevent overestimation of statistical signficance in this case.
 
 ___
 
@@ -299,7 +299,7 @@ We now have everything we need to interpret the results of our Chi-Square Test a
 
 From our results, we can see that, since our resulting p-value of **0.16** is *greater* than our Acceptance Criteria of 0.05 then we will *retain* the Null Hypothesis and conclude that there is not sufficient evidence that the observed difference occurs due to anything other than chance. Thus we determine there is no significant difference between the signup rates of Mailer 1 and Mailer 2.
 
-We can also make the same conclusion based upon our resulting Chi-Square statistic of **1.94** being *lower* than our Critical Value of **3.84**.
+We could also make the same conclusion based upon our resulting Chi-Square statistic of **1.94** being *lower* than our Critical Value of **3.84**.
 
 In order to make our output more dynamic, we have created code to automatically interpret the results and explain the outcome to us:
 
