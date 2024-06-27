@@ -37,7 +37,6 @@ Unfortunately, the company could only tag around 50% of the customer base and so
 In order to solve this problem, we're going to use the available customer metrics and *loyalty scores* for those customers who were tagged to help us build out a predictive model. This model will be able to find relationships between our data that can then be used to predict the *loyalty score* metric for any customers who could not be tagged.
 
 <br>
-<br>
 
 ### Key Definition  <a name="overview-definition"></a>
 
@@ -47,7 +46,6 @@ The *loyalty score* metric measures the % of grocery spend, at the market level,
 
 <u>Example 2:</u> Customer Y has a total grocery spend of $200 but only 20% is spent with our client. The remaining 80% is spend with competitors. Customer Y has a *customer loyalty score* of 0.2
 
-<br>
 <br>
 
 ### Actions <a name="overview-actions"></a>
@@ -61,21 +59,16 @@ Given we are looking to predict a numeric output, we will need to consider a reg
 * Random Forest
 
 <br>
-<br>
 
 ### Results <a name="overview-results"></a>
 
 After training and testing our different modelling approaches, we found that the Random Forest had the highest predictive accuracy.
-
-<br>
 
 **Metric 1: Adjusted R-Squared (Test Set)**
 
 * Random Forest = 0.955
 * Decision Tree = 0.886
 * Linear Regression = 0.754
-
-<br>
 
 **Metric 2: R-Squared (K-Fold Cross Validation, k = 4)**
 
@@ -85,7 +78,6 @@ After training and testing our different modelling approaches, we found that the
 
 While the accuracy of the model will always be important, it may not always be the sole consideration in choosing which model to use. For example, in some cases, it may be more important to explicitly understand the weighted drivers of prediction. However, given the key goal for our work was to provide accurate predictions of the *loyalty score* metric for those customers who were missing this data, we chose to take forward the Random Forest model for our predictions.
 
-<br>
 <br>
 
 ### Growth/Next Steps <a name="overview-growth"></a>
@@ -107,8 +99,9 @@ For the customer metrics we hypothesise will be able to predict the missing loya
 
 Before joining all of these tables together, we can aggregate some of our sales data from the *transactions* table to engineer some more useful features for our model. Once this is complete, we will then use pandas in Python to merge these tables together for all customers, creating a single dataset that can be used for modelling.
 
-```python
+<br>
 
+```python
 # import required packages
 import pandas as pd
 import pickle
@@ -148,7 +141,6 @@ regression_scoring.drop(["customer_loyalty_score"], axis = 1, inplace = True)
 # save our datasets for future use
 pickle.dump(regression_modelling, open("data/customer_loyalty_modelling.p", "wb"))
 pickle.dump(regression_scoring, open("data/customer_loyalty_scoring.p", "wb"))
-
 ```
 
 <br>
@@ -169,9 +161,10 @@ Once we have completed our data preprocessing in Python, we are left with the da
 | product_area_count | Independent | The number of product areas within ABC Grocery the customers has shopped into within the latest 6 months |
 | average_basket_value | Independent | The average spend per transaction for the customer in ABC Grocery within the latest 6 months |
 
-___
-
 <br>
+<br>
+
+___
 
 # Modelling Overview
 
@@ -185,9 +178,10 @@ Given we are looking to predict a numeric output, we will need to consider a reg
 * Decision Tree
 * Random Forest
 
-___
-
 <br>
+<br>
+
+___
 
 # Linear Regression <a name="linreg-title"></a>
 
@@ -204,8 +198,9 @@ To model our data using Linear Regression, we wille utlise the scikit-learn libr
 
 Since we saved our modelling data as a pickle file, we can now import this. At this point, we will also remove the id column and ensure our data is shuffled.
 
-```python
+<br>
 
+```python
 # import required packages
 import pandas as pd
 import pickle
@@ -225,7 +220,6 @@ data_for_model.drop("customer_id", axis = 1, inplace = True)
 
 # shuffle data
 data_for_model = shuffle(data_for_model, random_state = 42)
-
 ```
 
 <br>
@@ -245,12 +239,12 @@ For Linear Regression, we have certain data preprocessing steps that need to be 
 
 After an initial review of the data, we see that the number of missing values is extremely low, so instead of applying any imputation (i.e. mean, most common value) we will just remove these rows.
 
-```python
+<br>
 
+```python
 # remove rows where values are missing
 data_for_model.isna().sum()
 data_for_model.dropna(how = "any", inplace = True)
-
 ```
 
 <br>
@@ -284,7 +278,6 @@ We do this using the "boxplot approach", where we remove any rows where the valu
 <br>
 
 ```python
-
 outlier_investigation = data_for_model.describe()
 outlier_columns = ["distance_from_store", "total_sales", "total_items"]
 
@@ -302,7 +295,6 @@ for column in outlier_columns:
     print(f"{len(outliers)} outliers detected in column {column}")
     
     data_for_model.drop(outliers, inplace = True)
-
 ```
 
 <br>
@@ -318,14 +310,12 @@ Secondly, we will split both of these objects into training and test datasets. F
 <br>
 
 ```python
-
 # split data into X and y objects for modelling
 X = data_for_model.drop(["customer_loyalty_score"], axis = 1)
 y = data_for_model["customer_loyalty_score"]
 
 # split out training & test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
-
 ```
 
 <br>
@@ -349,7 +339,6 @@ Once we have completed all of the above steps in the code, we will also turn our
 <br>
 
 ```python
-
 # list of categorical variables that need encoding
 categorical_vars = ["gender"]
 
@@ -371,7 +360,6 @@ X_train.drop(categorical_vars, axis = 1, inplace = True)
 X_test_encoded = pd.DataFrame(X_test_encoded, columns = encoder_feature_names)
 X_test = pd.concat([X_test.reset_index(drop = True), X_test_encoded.reset_index(drop = True)], axis = 1)
 X_test.drop(categorical_vars, axis = 1, inplace = True)
-
 ```
 
 <br>
@@ -391,7 +379,6 @@ For our task, we will apply a variation of Reursive Feature Elimination called *
 <br>
 
 ```python
-
 # instantiate RFECV & the model type to be utilised
 regressor = LinearRegression()
 feature_selector = RFECV(regressor)
@@ -406,15 +393,15 @@ print(f"Optimal number of features: {optimal_feature_count}")
 # limit our training & test sets to only include the selected variables
 X_train = X_train.loc[:, feature_selector.get_support()]
 X_test = X_test.loc[:, feature_selector.get_support()]
-
 ```
 
 <br>
 
 The below code then produces a plot that visualises the cross-validated accuracy with each potential number of features:
 
-```python
+<br>
 
+```python
 plt.style.use('seaborn-v0_8-poster')
 plt.plot(range(1, len(fit.cv_results_['mean_test_score']) + 1), fit.cv_results_['mean_test_score'], marker = "o")
 plt.ylabel("Model Score")
@@ -422,7 +409,6 @@ plt.xlabel("Number of Features")
 plt.title(f"Feature Selection using RFE \n Optimal number of features is {optimal_feature_count} (at score of {round(max(fit.cv_results_['mean_test_score']),4)})")
 plt.tight_layout()
 plt.show()
-
 ```
 
 <br>
@@ -439,29 +425,31 @@ This creates the below plot, which shows us that the highest cross-validated acc
 
 We will then instantiate and train our Linear Regression model:
 
-```python
+<br>
 
+```python
 # instantiate our model object
 regressor = LinearRegression()
 
 # fit our model using our training & test sets
 regressor.fit(X_train, y_train)
-
 ```
 
 <br>
 
 ### Model Performance Assessment <a name="linreg-model-assessment"></a>
 
+<br>
+
 ##### Predict On The Test Set
 
 To assess how well our model is predicting on new data - we use the trained model object (here called *regressor*) and ask it to predict the *loyalty_score* variable for the test set.
 
-```python
+<br>
 
+```python
 # predict on the test set
 y_pred = regressor.predict(X_test)
-
 ```
 
 <br>
@@ -472,13 +460,15 @@ R-Squared is a metric that shows the percentage of variance in our output variab
 
 To calculate R-squared, we use the following code where we pass in our *predicted* outputs for the test set (y_pred), as well as the *actual* outputs for the test set (y_test)
 
-```python
+<br>
 
+```python
 # calculate r-squared for our test set predictions
 r_squared = r2_score(y_test, y_pred)
 print(r_squared)
-
 ```
+
+<br>
 
 The resulting R-squared score from this is **0.78**
 
@@ -494,14 +484,16 @@ The result of this is that we are provided a number of test set validation resul
 
 In the code below, we put this into place. We first specify that we want 4 "chunks", and then we pass in our regressor object, training set, and test set. We also specify the metric we want to assess with, which in this case, will be R-squared. Finally, we take a mean of all four test set results.
 
-```python
+<br>
 
+```python
 # calculate the mean cross validated r-squared for our test set predictions
 cv = KFold(n_splits = 4, shuffle = True, random_state = 42)
 cv_scores = cross_val_score(regressor, X_train, y_train, cv = cv, scoring = "r2")
 cv_scores.mean()
-
 ```
+
+<br>
 
 The mean cross-validated R-squared score from this is **0.853**
 
@@ -513,14 +505,16 @@ When applying Linear Regression with *multiple* input variables, the R-squared m
 
 **Adjusted R-Squared** is a metric that compensates for the addition of input variables, and only increases if the variable improves the model above what would be obtained by probability.  It is best practice to use Adjusted R-Squared when assessing the results of a Linear Regression with multiple input variables, as it gives a fairer perception of the fit of the data.
 
-```python
+<br>
 
+```python
 # calculate adjusted r-squared for our test set predictions
 num_data_points, num_input_vars = X_test.shape
 adjusted_r_squared = 1 - (1 - r_squared) * (num_data_points - 1) / (num_data_points - num_input_vars - 1)
 print(adjusted_r_squared)
-
 ```
+
+<br>
 
 The resulting *adjusted* R-squared score from this is **0.754** which as expected, is slightly lower than the score we got for R-squared on its own.
 
@@ -533,7 +527,6 @@ Although our overall goal for this project is predictive accuracy, rather than a
 <br>
 
 ```python
-
 # extract model coefficients
 coefficients = pd.DataFrame(regressor.coef_)
 input_variable_names = pd.DataFrame(X_train.columns)
@@ -542,7 +535,6 @@ summary_stats.columns = ["input_variable", "coefficient"]
 
 # extract model intercept
 regressor.intercept_
-
 ```
 
 <br>
@@ -571,9 +563,10 @@ The coefficients themselves help us to understand the impact of changing each of
 
 To provide an example of this - in the table above, we can see that the *distance_from_store* input variable has a coefficient value of -0.201. This is saying that *loyalty_score* decreases by 0.201 (or 20% as loyalty score is a percentage, or at least a decimal value between 0 and 1) for *every additional mile* that a customer lives from the store. This makes intuitive sense, as customers who live a long way from this store, most likely live near *another* store where they might do some of their shopping as well, whereas customers who live near this store, probably do a greater proportion of their shopping at this store, and hence have a higher loyalty score.
 
-___
-
 <br>
+<br>
+
+___
 
 # Decision Tree <a name="regtree-title"></a>
 
@@ -613,6 +606,8 @@ data_for_model = shuffle(data_for_model, random_state = 42)
 
 ```
 
+Test text for spacing view
+
 <br>
 
 ### Data Preprocessing <a name="regtree-preprocessing"></a>
@@ -629,12 +624,12 @@ While Linear Regression is susceptible to the effects of outliers, and highly co
 After our initial review of the data, we saw that the number of missing values was extremely low, so instead of applying any imputation (i.e. mean, most common value), we will again just remove these rows.
 
 ```python
-
 # remove rows where values are missing
 data_for_model.isna().sum()
 data_for_model.dropna(how = "any", inplace = True)
-
 ```
+
+Test text for spacing view
 
 <br>
 
