@@ -27,11 +27,12 @@ In this project, we're going to be looking to get an understanding of customer l
 - [08. Growth & Next Steps](#growth-next-steps)
 
 <br>
-<br>
 
 ___
 
 # Project Overview  <a name="overview-main"></a>
+
+<br>
 
 ### Context <a name="overview-context"></a>
 
