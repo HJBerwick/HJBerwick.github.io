@@ -146,11 +146,7 @@ pickle.dump(regression_modelling, open("data/customer_loyalty_modelling.p", "wb"
 pickle.dump(regression_scoring, open("data/customer_loyalty_scoring.p", "wb"))
 ```
 
-<br>
-
 Once we have completed our data preprocessing in Python, we are left with the dataset described below, which we will use for modelling.
-
-<br>
 
 | **Variable Name** | **Variable Type** | **Description** |
 |---|---|---|
@@ -254,8 +250,6 @@ There is no definitive right or wrong way to deal with outliers and, in fact, ju
 
 In this code section, we use **.describe()** from Pandas to investigate the spread of values for each of our predictors. The results of this can be seen in the table below.
 
-<br>
-
 | **metric** | **distance_from_store** | **credit_score** | **total_sales** | **total_items** | **transaction_count** | **product_area_count** | **average_basket_value** |
 |---|---|---|---|---|---|---|---|
 | mean | 2.02 | 0.60 | 1846.50 | 278.30 | 44.93 | 4.31 | 36.78 |
@@ -265,8 +259,6 @@ In this code section, we use **.describe()** from Pandas to investigate the spre
 | 50% | 1.65 | 0.59 | 1471.49 | 258.50 | 50.00 | 4.00 | 30.37 |
 | 75% | 2.91 | 0.66 | 2104.73 | 318.50 | 53.00 | 5.00 | 47.21 |
 | max | 44.37 | 0.88 | 9878.76 | 1187.00 | 109.00 | 5.00 | 102.34 |
-
-<br>
 
 Based on this investigation, we see the *max* column values for the *distance_from_store*, *total_sales*, and *total_items* variables to be much higher than the *median* value. For example, the median *distance_to_store* is 1.645 miles, but the maximum is over 44 miles!
 
@@ -386,11 +378,7 @@ X_train = X_train.loc[:, feature_selector.get_support()]
 X_test = X_test.loc[:, feature_selector.get_support()]
 ```
 
-<br>
-
 The below code then produces a plot that visualises the cross-validated accuracy with each potential number of features:
-
-<br>
 
 ```python
 plt.style.use('seaborn-v0_8-poster')
@@ -402,11 +390,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-<br>
-
 This creates the below plot, which shows us that the highest cross-validated accuracy (0.8625) is actually when we include all eight of our original input variables. This is marginally higher than 6 included variables, and 7 included variables. Thus we will continue on with all 8.
-
-<br>
 
 ![alt text](/img/posts/lin-reg-feature-selection-plot.png "Linear Regression Feature Selection Plot")
 
@@ -510,11 +494,7 @@ summary_stats.columns = ["input_variable", "coefficient"]
 regressor.intercept_
 ```
 
-<br>
-
 The information from that code block can be found in the table below:
-
-<br>
 
 | **input_variable** | **coefficient** |
 |---|---|
@@ -527,8 +507,6 @@ The information from that code block can be found in the table below:
 | product_area_count | 0.062 |
 | average_basket_value | -0.004 |
 | gender_M | -0.013 |
-
-<br>
 
 If we had a single input variable, the coefficient of this variable, in conjunction with the intercept, would yield the equation for a line of best fit. For two input variables, this would become a plane of best fit. For our model, and others with higher dimensionality, the coefficients and intercept effectively generalise to a hyperplane of best fit, although naturally this becomes very difficult for us to visualise.
 
@@ -767,15 +745,9 @@ plt.tight_layout()
 plt.show()
 ```
 
-<br>
-
 That code also gives us the below plot, which visualises the results.
 
-<br>
-
 ![alt text](/img/posts/regression-tree-max-depth-plot.png "Decision Tree Max Depth Plot")
-
-<br>
 
 The plot shows that the *maximum* classification accuracy on the test set is found when applying a *max_depth* value of 7. However, given we lose very little accuracy with a *max depth* value of 4, and especially since this would result in a simpler model, that generalised even better on new data, we make the executive decision to retrain our Decision Tree with a maximum depth of 4.
 
@@ -799,15 +771,9 @@ tree = plot_tree(regressor,
                  fontsize = 16)
 ```
 
-<br>
-
 That code gives us the plot below:
 
-<br>
-
 ![alt text](/img/posts/regression-tree-nodes-plot.png "Decision Tree Max Depth Plot")
-
-<br>
 
 This is a very powerful visual, and one that can be shown to stakeholders in the business to ensure they understand exactly what is driving the predictions.
 
@@ -1063,19 +1029,11 @@ plt.tight_layout()
 plt.show()
 ```
 
-<br>
-
 That code gives us the below plots - the first being for *Feature Importance* and the second for *Permutation Importance*.
-
-<br>
 
 ![alt text](/img/posts/rf-regression-feature-importance.png "Random Forest Feature Importance Plot")
 
-<br>
-
 ![alt text](/img/posts/rf-regression-permutation-importance.png "Random Forest Permutation Importance Plot")
-
-<br>
 
 The overall story from both approaches is very similar, in that, by far, the most important or impactful input variable is *distance_from_store*, which is the same insight we derived when assessing our Linear Regression and Decision Tree models.
 
