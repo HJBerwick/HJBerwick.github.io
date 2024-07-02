@@ -13,10 +13,10 @@ In this project, we're going to be looking to get an understanding of customer l
 
 - [00. Project Overview](#overview-main)
     - [Context](#overview-context)
+    - [Key Definition](#overview-definition)
     - [Actions](#overview-actions)
     - [Results](#overview-results)
     - [Growth/Next Steps](#overview-growth)
-    - [Key Definition](#overview-definition)
 - [01. Data Overview](#data-overview)
 - [02. Modelling Overview](#modelling-overview)
 - [03. Linear Regression](#linreg-title)
