@@ -185,7 +185,7 @@ ___
 
 # Linear Regression <a name="linreg-title"></a>
 
-To model our data using Linear Regression, we wille utlise the scikit-learn library within Python. The code below is broken up into 4 key sections:
+To model our data using Linear Regression, we will utlise the scikit-learn library within Python. The code below is broken up into 4 key sections:
 
 * Data Import
 * Data Preprocessing
