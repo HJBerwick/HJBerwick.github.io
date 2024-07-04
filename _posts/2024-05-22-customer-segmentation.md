@@ -45,7 +45,7 @@ They have asked us to use data, and Machine Learning to help segment up their cu
 
 ### Actions <a name="overview-actions"></a>
 
-Our first task is to compile the necessary data from sevaral tables in the database, namely the *transactions* table and the *product_areas* table. We will join together the relevant information using Pandas, and then aggregate the transactional data across product areas, from the most recent six months, at customer level. The final data for clustering will outline the percentage of sales allocated to each product area for each customer.
+Our first task is to compile the necessary data from several tables in the database, namely the *transactions* table and the *product_areas* table. We will join together the relevant information using Pandas, and then aggregate the transactional data across product areas, from the most recent six months, at customer level. The final data for clustering will outline the percentage of sales allocated to each product area for each customer.
 
 As a starting point, we will test and apply k-means clustering for this task. We will need to apply some data preprocessing, most importantly feature scaling, to ensure all variables exist on the same scale. This is a very important consideration for distance based algorithms such as k-means.
 
