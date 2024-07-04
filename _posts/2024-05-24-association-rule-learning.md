@@ -232,16 +232,16 @@ for index, row in alcohol_transactions.iterrows():
 # print out first 10 lists from master list
 print(transactions_list[:10])
 
-[['Premium Lager', 'Iberia'],
- ['Sparkling', 'Premium Lager', 'Premium Cider', 'Own Label', 'Italy White', 'Italian White', 'Italian Red', 'French Red', 'Bottled Ale'],
- ['Small Sizes White', 'Small Sizes Red', 'Sherry Spanish', 'No/Low Alc Cider', 'Cooking Wine', 'Cocktails/Liqueurs', 'Bottled Ale'],
- ['White Uk', 'Sherry Spanish', 'Port', 'Italian White', 'Italian Red'],
- ['Premium Lager', 'Over-Ice Cider', 'French White South', 'French Rose', 'Cocktails/Liqueurs', 'Bottled Ale'],
- ['Kosher Red'],
- ['Own Label', 'Italy White', 'Australian Red'],
- ['Brandy/Cognac'],
- ['Small Sizes White', 'Bottled Ale'],
- ['White Uk', 'Spirits Mixers', 'Sparkling', 'German', 'Australian Red', 'American Red']]
+>> [['Premium Lager', 'Iberia'],
+    ['Sparkling', 'Premium Lager', 'Premium Cider', 'Own Label', 'Italy White', 'Italian White', 'Italian Red', 'French Red', 'Bottled Ale'],
+    ['Small Sizes White', 'Small Sizes Red', 'Sherry Spanish', 'No/Low Alc Cider', 'Cooking Wine', 'Cocktails/Liqueurs', 'Bottled Ale'],
+    ['White Uk', 'Sherry Spanish', 'Port', 'Italian White', 'Italian Red'],
+    ['Premium Lager', 'Over-Ice Cider', 'French White South', 'French Rose', 'Cocktails/Liqueurs', 'Bottled Ale'],
+    ['Kosher Red'],
+    ['Own Label', 'Italy White', 'Australian Red'],
+    ['Brandy/Cognac'],
+    ['Small Sizes White', 'Bottled Ale'],
+    ['White Uk', 'Spirits Mixers', 'Sparkling', 'German', 'Australian Red', 'American Red']]
 ```
 
 As you can see from the print statement, each transaction (row) from the initial DataFrame is now contained within a list, all making up the master list.
@@ -277,7 +277,7 @@ apriori_rules = list(apriori_rules)
 # print out the first element
 apriori_rules[0]
 
-RelationRecord(items=frozenset({'America White', 'American Rose'}), support=0.020745724698626296, ordered_statistics=[OrderedStatistic(items_base=frozenset({'American Rose'}), items_add=frozenset({'America White'}), confidence=0.5323741007194245, lift=3.997849299507762)])
+>> RelationRecord(items=frozenset({'America White', 'American Rose'}), support=0.020745724698626296, ordered_statistics=[OrderedStatistic(items_base=frozenset({'American Rose'}), items_add=frozenset({'America White'}), confidence=0.5323741007194245, lift=3.997849299507762)])
 ```
 
 The output from the algorithm is in the form of a generator. We convert this to a list as this is easier to manipulate and analyse.
