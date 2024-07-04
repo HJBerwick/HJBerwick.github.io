@@ -5,7 +5,9 @@ image: "/posts/association-rules-title-img.png"
 tags: [Association Rule Learning, Python]
 ---
 
-In this project we use Association Rule Learning to analyse the transactional relationships & dependencies between products in the alcohol section of a grocery store.
+In this project, we're going to take a look at how we can use Association Rule Learning to analyse the transactional relationships and dependencies between products in the alcohol section of a grocery store.
+
+<br>
 
 # Table of contents
 
@@ -21,61 +23,64 @@ In this project we use Association Rule Learning to analyse the transactional re
 - [05. Interpreting The Results](#apriori-results)
 - [06. Growth & Next Steps](#growth-next-steps)
 
+<br>
+
 ___
 
 # Project Overview  <a name="overview-main"></a>
 
+<br>
+
 ### Context <a name="overview-context"></a>
 
-Our client is looking to re-jig the alcohol section within their store.  Customers are often complaining that they can't find the products they want, and are also wanting recommendations about which other products to try.  On top of this, their marketing team would like to start running "bundled" promotions as this has worked well in other areas of the store - but need guidance with selecting which products to put together.
+Our client is looking to reorganise the alcohol section within their store. Customers are often complaining that they can't find the products they want, and are also wanting recommendations about which other products to try. On top of this, their marketing team would like to start running "bundled" promotions, as this has worked well in other areas of the store, but need guidance with selecting which products to put together.
 
-They have provided us a sample of 3,500 alcohol transactions - our task is fairly open - to see if we can find solutions or insights that might help the business address the aforementioned problems!
+They have provided us a sample of 3,500 alcohol transactions. Our task is to see if we can find solutions or insights that might help the business address the aforementioned problems.
 
 <br>
-<br>
+
 ### Actions <a name="overview-actions"></a>
 
-Based upon the tasks at hand - we apply Association Rule Learning, specifically *Apriori* to examine & analyse the strength of relationship between different products within the transactional data.
+Based upon the tasks at hand, we will look to apply Association Rule Learning, specifically *Apriori*, to examine and analyse the strength of relationship between different products within the transactional data.
 
-We firstly installed the apyori package, which contains all of the required functionality for this task.
+Our first task is to install the *apyori* package, which contains all of the required functionality for this task.
 
-We then needed to bring in the sample data, and get it into the right format for the Apriori algorithm to deal with.
+We will then need to bring in the sample data, and get it into the right format for the Apriori algorithm to deal with.
 
-From there we apply the Apriori algorithm to provide us with several different relationship metrics, namely:
+From there we will be able to apply the Apriori algorithm to provide us with several different relationship metrics, namely:
 
 * Support
 * Confidence
 * Expected Confidence
 * Lift
 
-These metrics examine product relationships in different ways, so we utilise each to put forward ideas that address each of the tasks at hand.  You can read more about these metrics, and the Apriori algorithm in the relevant section below.
+These metrics examine product relationships in different ways, so we utilise each to put forward ideas that address each of the tasks at hand. You can read more about these metrics, and the Apriori algorithm, in the relevant section below.
 
-<br>
 <br>
 
 ### Results <a name="overview-results"></a>
 
-Interestingly, the strongest relationship existed between two products labelled as "gifts" - this is useful information for the category managers as they may want to ensure that gift products are available in one section of the aisle, rather than existing in their respective product types.
+Interestingly, the strongest relationship existed between two products labelled as "gifts". This is useful information for the category managers as they may want to ensure that gift products are available in one section of the aisle, rather than existing in their respective product types.
 
-We also saw some strong relationships between French wines, and other French wines - which again is extremely useful for category managers who are thinking about the best way to lay out the products - having sections by country rather than necessarily by type might make it easier for customers to find what they are after.
+We also saw some strong relationships between different French wines, which again is extremely useful for category managers who are thinking about the best way to lay out the products. Having sections by country, rather than necessarily by type, might make it easier for customers to find what they are after.
 
-Another interesting association is between products labelled "small".  At this point, we don't know exactly what that means - but it is certainly something to take back to the client as they may be able to make more sense of it, and turn it into an actionable insight!
+Another interesting association is between products labelled "small". At this point, we don't know exactly what that means, but it is certainly something to take back to the client as they may be able to make more sense of it, and turn it into an actionable insight.
 
-We propose to also build a "search engine" for category managers where they can look-up products by keyword in the product association table.
+We propose to also build a "search engine" for category managers where they can look up products by keyword in the product association table.
 
-As an example - we search for any products that associate strongly with "New Zealand" products. There appeared to be *some* relationship between New Zealand wines and other New Zealand wines, but what was also interesting was that New Zealand wines seemed to be more associated with French & South American wines than they were with Australian Wines.
+As an example, we search for any products that associate strongly with "New Zealand" products. There appeared to be *some* relationship between New Zealand wines and other New Zealand wines, but what was also interesting was that New Zealand wines seemed to be more associated with French and South American wines than they were with Australian Wines.
 
-New Zealand & Australia are often grouped together, but in terms of wine this wouldn't make sense - perhaps because of the difference climates the wines are very different and thus it wouldn't make sense to group wines by geographical proximity, but by preference instead.  This is only a hypothesis for now - we will need to take this back to the client and get their category experts to help us interpret it!
+New Zealand and Australia are often grouped together, but in terms of wine, we found that this may not be the best approach. Perhaps because of the difference in their climates, the wines are very different, and thus it would make more sense to group wines by preference, rather than by geographical proximity. However, this is only a hypothesis for now. We will need to take this back to the client and get their category experts to help us interpret it.
 
 <br>
-<br>
+
 ### Growth/Next Steps <a name="overview-growth"></a>
 
-As this is first & foremost an exploratory project, we will take back the results to the client Category Managers & discuss the results, our views on how these insights can be actioned best, and any considerations that need to be taken into account when interpreting.
+As this is first and foremost an exploratory project, we will take back the results to the client Category Managers and discuss the results, our views on how these insights can be actioned best, and any considerations that need to be taken into account when interpreting.
 
-From there we will recommend applying this same logic to all other categories, as well as potentially across the full-product range.
+From there, we will recommend applying this same logic to all other categories, as well as potentially across the full product range.
 
-We will also propose the build of the "Keyword Search Engine" which will help Category Managers extract and utilise the insights held within the data.
+We will also propose the building of a "Keyword Search Engine", which will help Category Managers extract and utilise the insights held within the data.
 
 <br>
 <br>
@@ -84,25 +89,20 @@ ___
 
 # Data Overview  <a name="data-overview"></a>
 
-Our initial dataset contains 3,500 transactions, each of which shows the alcohol products that were present in that transaction.  
+Our initial dataset contains 3,500 transactions, each of which shows the alcohol products that were present in that transaction.
 
-In the code below, we import Pandas, as well as the apriori algorithm from the apyori library, and we bring the raw data into Python.
-<br>
+In the code below, we will import Pandas, as well as the apriori algorithm from the apyori library, and we will also bring the raw data into Python.
+
 ```python
-
 # import required Python packages
 import pandas as pd
 from apyori import apriori
 
 # import the sample data
 alcohol_transactions = pd.read_csv("data/sample_data_apriori.csv")
-
 ```
-<br>
 
 A sample of this data (the first 10 transactions) can be seen below:
-<br>
-<br>
 
 | **transaction_id** | **product1** | **product2** | **product3** | **product4** | **product5** | **…** |
 |---|---|---|---|---|---|---|
@@ -118,20 +118,22 @@ A sample of this data (the first 10 transactions) can be seen below:
 | 10 | White Uk | Spirits Mixers | Sparkling | German | Australian Red | … |
 | … | … | … | … | … | … | … |
 
-<br>
-To explain this data, *Transaction 1* (the first row) contained two products, Premium Lager, and Iberia.  As there were only two products in this transaction, the remaining columns are blank.
+To explain this data, *Transaction 1* (the first row) contained two products, Premium Lager, and Iberia. As there were only two products in this transaction, the remaining columns are blank.
 
-Transaction 2 (the second row) contained nine products (not all shown in the snippet).  The first nine columns for this row are therefore populated, followed by blank values.
+*Transaction 2* (the second row) contained nine products (not all shown in the snippet). The first nine columns for this row are therefore populated, with the subsequent columns holding blank values.
 
 For our sample data, the maximum number of unique products was 45, meaning the table of data had a total of 46 columns (45 for products + transaction_id).
 
-The *apyori* library that we are using does not want the data in this format, it instead wants it passed in as a *list of lists* so we will need to modify it.  The code and logic for this can be found in the Data Preparation section below.
+The *apyori* library that we are using does not want the data in this format, it instead wants it passed in as a *list of lists* so we will need to modify it. The code and logic for this can be found in the Data Preparation section below.
+
+<br>
+<br>
 
 ___
-<br>
+
 # Apriori Overview  <a name="apriori-overview"></a>
 
-Association Rule Learning is an approach that discovers the strength of relationships between different data-points.  It is commonly utilised to understand which products are frequently (or infrequently) purchased together.
+Association Rule Learning is an approach that discovers the strength of relationships between different data points. It is commonly utilised to understand which products are frequently (or infrequently) purchased together.
 
 In a business sense this can provide some really interesting, and useful information that can help optimise:
 
@@ -151,66 +153,73 @@ In Apriori there are four key metrics, namely:
 Each of these metrics help us understand items, and their relationship with other items in their own way.
 
 <br>
+
 ##### Support
 
-Support is extremely intuitive, it simply tells us the percentage of all transactions that contain *both* Item A and Item B.  To calculate this we’d just count up the transactions that include both items, and divide this by the total number of transactions.
+Support is extremely intuitive, it simply tells us the percentage of all transactions that contain *both* item A and item B. To calculate this we’d just count up the transactions that include both items, and divide this by the total number of transactions.
 
 You can think of Support as a baseline metric that helps us understand how common or popular this particular *pair* of items is.
 
 <br>
+
 ##### Confidence
 
 Confidence takes us a little bit further than Support, and looks more explcitly at the *relationship* between the two items.
 
-It asks "of all transactions that *included item A*, what proportion also included item B?"  
+It asks "of all transactions that *included item A*, what proportion also included item B?"
 
-In other words, here we are counting up the number of transactions that contained *both items A and B* and then rather than dividing by *all transactions* like we did for Support, we instead divide this by the *total number of transactions that contained item A*.
+In other words, here we are counting up the number of transactions that contained *both items A and B* but then, rather than dividing by *all transactions* like we did for Support, we instead divide this by the *total number of transactions that contained item A*.
 
-A high score for Confidence can mean a strong product relationship - but not always!  When one of the items is very popular we can get an inflated score.  To help us regulate this, we can look at two further metrics, Expected Confidence and Lift!
+A high score for Confidence can mean a strong product relationship, but not always. When one of the items is very popular we can get an inflated score. To help us regulate this, we can look at two further metrics, Expected Confidence and Lift.
 
 <br>
+
 ##### Expected Confidence
 
 Expected Confidence is quite simple, it is the percentage of *all transactions* that *contained item B*.
 
-This is important as it provides indication of what the Confidence *would be* if there were no relationship between the items.  We can use Expected Confidence, along with Confidence to calculate our final (and most powerful) metric - Lift!
+This is important as it provides indication of what the Confidence *would be* if there were no relationship between the items. We can use Expected Confidence, along with Confidence to calculate our final (and most powerful) metric, Lift.
 
 <br>
+
 ##### Lift
 
-Lift is the factor by which the Confidence, exceeds the Expected Confidence.  In other words, Lift tells us how likely item B is purchased *when item A is purchased*, while *controlling* for how popular item B is.
+Lift is the factor by which the Confidence, exceeds the Expected Confidence. In other words, Lift tells us how likely item B is purchased *when item A is purchased*, while *controlling* for how popular item B is.
 
 We calculate Lift by dividing Confidence by Expected Confidence.
 
-A Lift score *greater than 1* indicates that items A & B appear together *more often* than expected, and conversely a Lift score *less then 1* indicates that items A & B appear together *less often* than expected.
+A Lift score *greater than 1* indicates that items A and B appear together *more often* than expected, and conversely, a Lift score *less then 1* indicates that items A and B appear together *less often* than expected.
 
 <br>
+
 ##### In Practice
 
-While above we're just discussing two products (Item A & Item B) - in reality this score would be calculated between *all* pairs of products, and we could then sort these by Lift score (for example) and see exactly what the strongest or weakest relationships were - and this information would guide our decisions regarding product layout, recommendations for customers, or promotions.
+While above we're just discussing two products (item A and item B), in reality, this score would be calculated between *all* pairs of products, and we could then sort these by Lift score, for example, to see exactly what the strongest or weakest relationships were. This information would guide our decisions regarding product layout, recommendations for customers, or promotions.
 
 <br>
+
 ##### An Important Consideration
 
-Something to consider when assessing the results of Apriori is that, Item/Product relationships that have a *high Lift score* but also have a *low Support score* should be interpreted with caution!
+Something to consider when assessing the results of Apriori is that item/product relationships that have a *high Lift score*, but also have a *low Support score*, should be interpreted with caution.
 
-In other words, if we sorted all Item relationships by descending Lift score, the one that comes out on top might initially seem very impressive and it may appear that there is a very strong relationship between the two items.  Always take into account the Support metric - it could be that this relationship is only taking place by chance due to the rarity of the item set.
+In other words, if we sorted all item relationships by descending Lift score, the one that comes out on top might initially seem very impressive and it may appear that there is a very strong relationship between the two items. However, we should always take into account the Support metric, as it could be that this relationship is only taking place by chance due to the rarity of the item set.
+
+<br>
+<br>
 
 ___
-<br>
+
 # Data Preparation  <a name="apriori-data-prep"></a>
 
-As mentioned in the Data Overview section above, the *apyori* library that we are using does not want the data in table format, it instead wants it passed in as a *list of lists* so we will need to modify it here.  
+As mentioned in the Data Overview section above, the *apyori* library that we are using does not want the data in table format, it instead wants it passed in as a *list of lists* so we will need to modify it here.
 
-In the code below, we:
+In the code below, we will:
 
 * Remove the ID column as it is not required
 * Iterate over the DataFrame, appending each transaction to a list, and appending those to a master list
 * Print out the first 10 lists from the master list
 
-<br>
 ```python
-
 # drop ID column
 alcohol_transactions.drop("transaction_id", axis = 1, inplace = True)
 
@@ -233,27 +242,27 @@ print(transactions_list[:10])
  ['Brandy/Cognac'],
  ['Small Sizes White', 'Bottled Ale'],
  ['White Uk', 'Spirits Mixers', 'Sparkling', 'German', 'Australian Red', 'American Red']]
-
 ```
-<br>
 
 As you can see from the print statement, each transaction (row) from the initial DataFrame is now contained within a list, all making up the master list.
 
-___
 <br>
+<br>
+
+___
+
 # Applying The Apriori Algorithm <a name="apriori-fit"></a>
 
 In the code below we apply the apriori algorithm from the apyori library.
 
-This algorithm allows us to specify the association rules that we want.  We set:
+This algorithm allows us to specify the association rules that we want. We set:
 
 * A minimum *Support* of 0.003 to eliminate very rare product sets
 * A minimum *Confidence* of 0.2
 * A minimum *Lift* of 3 to ensure we're only focusing on product sets with strong relationships
-* A minimum & maximum length of 2 meaning we're only focusing on product *pairs* rather than larger sets
+* A minimum & maximum length of 2, meaning we're only focusing on product *pairs* rather than larger sets
 
 ```python
-
 # apply the apriori algorthm and specify required parameters
 apriori_rules = apriori(transactions_list,
                         min_support = 0.003,
@@ -269,15 +278,13 @@ apriori_rules = list(apriori_rules)
 apriori_rules[0]
 
 RelationRecord(items=frozenset({'America White', 'American Rose'}), support=0.020745724698626296, ordered_statistics=[OrderedStatistic(items_base=frozenset({'American Rose'}), items_add=frozenset({'America White'}), confidence=0.5323741007194245, lift=3.997849299507762)])
-
 ```
-<br>
-The output from the algorithm is in the form of a generator. We covert this to a list as this is easier to manipulate & analyse.  
 
-Based upon the parameters we set when applying the algorithm, we get 132 product pairs.  We print out the first element from the list to see what the output looks like, and while this contains all the key information we need - to make it easier to analyse (and more accessible & useable for stakeholders) - in the next code snippet, we extract the key elements and use list comprehension to re-work this data to exist as a Pandas DataFrame.
+The output from the algorithm is in the form of a generator. We convert this to a list as this is easier to manipulate and analyse.
+
+Based upon the parameters we set when applying the algorithm, we get 132 product pairs. We print out the first element from the list to see what the output looks like and, while this contains all the key information we need, to make it easier to analyse (and more accessible and useable for stakeholders), in the next code snippet, we extract the key elements and use list comprehension to re-work this data to exist as a Pandas DataFrame.
 
 ```python
-
 # extract each piece of information
 product1 = [list(rule[2][0][0])[0] for rule in apriori_rules]
 product2 = [list(rule[2][0][1])[0] for rule in apriori_rules]
@@ -291,12 +298,9 @@ apriori_rules_df = pd.DataFrame({"product1" : product1,
                                  "support" : support,
                                  "confidence": confidence,
                                  "lift" : lift})
-
 ```
-<br>
-A sample of this data (the first 5 product pairs - not in any order) can be seen below:
-<br>
-<br>
+
+A sample of this data (the first 5 product pairs, not in any order) can be seen below:
 
 | **product1** | **product2** | **support** | **confidence** | **lift** |
 |---|---|---|---|---|
@@ -307,29 +311,27 @@ A sample of this data (the first 5 product pairs - not in any order) can be seen
 | American Rose | American Red | 0.016 | 0.403 | 3.575 |
 | … | … | … | … | … |
 
-<br>
 In the DataFrame we have the two products in the pair, and then the three key metrics; Support, Confidence, and Lift. 
 
-___
 <br>
+<br>
+
+___
+
 # Interpreting The Results <a name="apriori-results"></a>
 
 <br>
+
 #### Associated Products
 
-Now we have our data in a useable format - let's look at the product pairs with the *strongest* relationships - we can do this by sorting our Lift column, in descending order.
+Now we have our data in a useable format, let's look at the product pairs with the *strongest* relationships. We can do this by sorting our Lift column, in descending order.
 
 ```python
-
 # sort pairs by descending Lift
 apriori_rules_df.sort_values(by = "lift", ascending = False, inplace = True)
-
 ```
 
-<br>
-In the table below, we can see the ten highest product relationships, based upon Lift
-<br>
-<br>
+In the table below, we can see the ten highest product relationships, based upon Lift:
 
 | **product1** | **product2** | **support** | **confidence** | **lift** |
 |---|---|---|---|---|
@@ -345,32 +347,28 @@ In the table below, we can see the ten highest product relationships, based upon
 | Small Sizeswhite Oth | Small Sizes Red | 0.003 | 0.324 | 6.306 |
 | Small Sizes Wht Othr | Small Sizes White | 0.003 | 0.414 | 6.176 |
 
+Interestingly, the strongest relationship exists between two products labelled as "gifts". This is useful information for the category managers as they may want to ensure that gift products are available in one section of the aisle, rather than existing in their respective product types.
+
+We also see some strong relationships between different French wines, which again is extremely useful for category managers who are thinking about the best way to lay out the products. Having sections by country, rather than necessarily by type, might make it easier for customers to find what they are after.
+
+Another interesting association is between products labelled "small". At this point, we don't know exactly what that means, but it is certainly something to take back to the client as they may be able to make more sense of it, and turn it into an actionable insight.
+
 <br>
-Interestingly, the strongest relationship exists between two products labelled as "gifts" - this is useful information for the category managers as they may want to ensure that gift products are available in one section of the aisle, rather than existing in their respective product types.
 
-We also see some strong relationships between French wines, and other French wines - which again is extremely useful for category managers who are thinking about the best way to lay out the products - having sections by country rather than necessarily by type might make it easier for customers to find what they are after.
-
-Another interesting association is between products labelled "small".  At this point, we don't know exactly what that means - but it is certainly something to take back to the client as they may be able to make more sense of it, and turn it into an actionable insight!
-
-<br>
 #### Search Tool For Category Managers
 
 With the data now stored as a DataFrame, we will also go back to the client with a proposal to build a simple "search" tool for Category Managers to use.
 
 An example of how this might work would be to test a hypothesis around New Zealand wines.
 
-The code below uses a string function to pull back all rows in the DataFrame where *product1* contains the words "New Zealand"
+The code below uses a string function to pull back all rows in the DataFrame where *product1* contains the words "New Zealand".
 
 ```python
-
 # search based upon text
 apriori_rules_df[apriori_rules_df["product1"].str.contains("New Zealand")]
-
 ```
-<br>
+
 The results of this search, in order of descending Lift are as follows:
-<br>
-<br>
 
 | **product1** | **product2** | **support** | **confidence** | **lift** |
 |---|---|---|---|---|
@@ -390,17 +388,20 @@ The results of this search, in order of descending Lift are as follows:
 | New Zealand Red | South America White | 0.006728343 | 0.342857143 | 3.314285714 |
 | New Zealand Red | Australia White | 0.007289038 | 0.371428571 | 3.215742025 |
 
-<br>
-There appears to be *some* relationship between New Zealand wines and other New Zealand wines, but what is also interesting is that New Zealand wines seem to be more associated with French & South American wines than they are with Australian Wines.
+There appears to be *some* relationship between New Zealand wines and other New Zealand wines, but what is also interesting is that New Zealand wines seem to be more associated with French and South American wines than they are with Australian Wines.
 
-New Zealand & Australia are often grouped together, but in terms of wine this wouldn't make sense - perhaps because of the difference climates the wines are very different and thus it wouldn't make sense to group wines by geographical proximity, but by preference instead.  This is only a hypothesis for now - we will need to take this back to the client and get their category experts to help us interpret it!
+New Zealand and Australia are often grouped together, but in terms of wine, we found that this may not be the best approach. Perhaps because of the difference in their climates, the wines are very different, and thus it would make more sense to group wines by preference, rather than by geographical proximity. However, this is only a hypothesis for now. We will need to take this back to the client and get their category experts to help us interpret it.
+
+<br>
+<br>
 
 ___
-<br>
+
 # Growth & Next Steps <a name="growth-next-steps"></a>
 
-As this was first & foremost an exploratory project, we will take back the results to the client Category Managers & discuss the results, our views on how these insights can be actioned best, and any considerations that need to be taken into account when interpreting.
+As this is first and foremost an exploratory project, we will take back the results to the client Category Managers and discuss the results, our views on how these insights can be actioned best, and any considerations that need to be taken into account when interpreting.
 
-From there we will recommend applying this same logic to all other categories, as well as potentially across the full-product range.
+From there, we will recommend applying this same logic to all other categories, as well as potentially across the full product range.
 
-We will also propose the build of the "Keyword Search Engine" which will help Category Managers extract and utilise the insights held within the data.
+We will also propose the building of a "Keyword Search Engine", which will help Category Managers extract and utilise the insights held within the data.
+
