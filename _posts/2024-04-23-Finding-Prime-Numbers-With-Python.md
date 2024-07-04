@@ -39,16 +39,16 @@ To start with, we want to extract the first value from our set of numbers (calle
 
 ```python
 print(number_range)
->>> {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+>> {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
 ```
 The *pop* method extracts an element from a list or set and provides this value to us. If we use *pop*, this will remove the first element from our **number_range** set, and we can then assign this to an object called **prime**.
 
 ```python
 prime = number_range.pop()
 print(prime)
->>> 2
+>> 2
 print(number_range)
->>> {3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+>> {3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
 ```
 
 Given that we know the first value in our set is the smallest, we also know that there are no values, other than itself and 1, which will divide into this number and so we can safely say that this is a prime number. As a result, let's add this to our list of primes.
@@ -56,7 +56,7 @@ Given that we know the first value in our set is the smallest, we also know that
 ```python
 primes_list.append(prime)
 print(primes_list)
->>> [2]
+>> [2]
 ```
 
 Now for our previous logic to continue to hold, i.e. that the lowest value in our range is prime, we need to make some adjustments. On our first iteration, our range started at 2, which we knew to be prime, and we also knew that there were no smaller divisors, other than 1, that existed outside of this set of numbers. As we have removed a value, to ensure the smallest value in our **number_range** set is prime, we need to check which numbers can be divided by the prime value we just found.
@@ -73,7 +73,7 @@ We can now take a look at our list of multiples:
 
 ```python
 print(multiples)
->>> {4, 6, 8, 10, 12, 14, 16, 18, 20}
+>> {4, 6, 8, 10, 12, 14, 16, 18, 20}
 ```
 
 This brings us to the key functionality we referenced above, which really underpins our approach.This functionality is the **difference_update** method for sets which will remove any elements from our set that are also found to be present in a comparison set. For our purposes, this means we can remove any values from our **number_range** set which are also listed as **multiples** of our previously found prime number. Given that these multiples are divisible by more than just themselves and 1, we know they are not prime and so we can happily discard these values.
@@ -82,10 +82,10 @@ Before we apply the **difference_update**, we can visually compare our two sets.
 
 ```python
 print(number_range)
->>> {3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
+>> {3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
 
 print(multiples)
->>> {4, 6, 8, 10, 12, 14, 16, 18, 20}
+>> {4, 6, 8, 10, 12, 14, 16, 18, 20}
 ```
 
 To use **difference_update**, we can put our **number_range** set and then apply the difference update with respect to our **multiples** to only include the values that are *different* from those in a second set.
@@ -93,7 +93,7 @@ To use **difference_update**, we can put our **number_range** set and then apply
 ```python
 number_range.difference_update(multiples)
 print(number_range)
->>> {3, 5, 7, 9, 11, 13, 15, 17, 19}
+>> {3, 5, 7, 9, 11, 13, 15, 17, 19}
 ```
 
 We can now see that our list of potential prime numbers has decreased significantly. In fact, every time we find a new prime, we will also significantly reduce our list of potentials by calculating further multiples, leading to a smaller and smaller pool of data points to assess, and hence this turns out to be a really efficient approach.
@@ -125,7 +125,7 @@ We can then print our list of primes to see what we have come up with.
 
 ```python
 print(primes_list)
->>> [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997]
+>> [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499, 503, 509, 521, 523, 541, 547, 557, 563, 569, 571, 577, 587, 593, 599, 601, 607, 613, 617, 619, 631, 641, 643, 647, 653, 659, 661, 673, 677, 683, 691, 701, 709, 719, 727, 733, 739, 743, 751, 757, 761, 769, 773, 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977, 983, 991, 997]
 ```
 
 As we can see above, when we begin to use larger upper limits, we will start to see a lot of data returned. To help us get our head around what we've found, we could also explore some interesting summary statistics for our list of primes. For example, we can take a look at the total number of primes found, or the largest in our list.
@@ -134,7 +134,7 @@ As we can see above, when we begin to use larger upper limits, we will start to 
 prime_count = len(primes_list)
 largest_prime = max(primes_list)
 print(f"There are {prime_count} prime numbers between 1 and {n}, the largest of which is {largest_prime}")
->>> There are 168 prime numbers between 1 and 1000, the largest of which is 997
+>> There are 168 prime numbers between 1 and 1000, the largest of which is 997
 ```
 
 Now that we have successfully created our method to find primes up to a given limit, and we have a good way to summarise our findings, all that is left is to add this logic within a function so we can easily use this in future.
@@ -164,7 +164,7 @@ With this function in place, we can now pass it any upper bound we wish, and the
 
 ```python
 primes_finder(1000000)
->>> There are 78498 prime numbers between 1 and 1000000, the largest of which is 999983
+>> There are 78498 prime numbers between 1 and 1000000, the largest of which is 999983
 ```
 
 That's quite a change of gear from our initial limit of 20!
