@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Fruit Classification Using A Convolutional Neural Network
-image: "/posts/fruit_cnn_header_new2.png"
+image: "/posts/fruit_cnn_header_new3.png"
 tags: [Deep Learning, CNN, Data Science, Computer Vision, Python]
 ---
 
