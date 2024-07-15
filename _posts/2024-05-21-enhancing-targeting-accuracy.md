@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Enhancing Targeting Accuracy Using ML
-image: "/posts/targeting_header_new.png"
+image: "/posts/targeting_header_new2.png"
 tags: [Customer Targeting, Machine Learning, Classification, Python]
 ---
 
