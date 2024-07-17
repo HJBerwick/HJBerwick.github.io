@@ -113,7 +113,7 @@ Our final action is then to add our date filter. To do so, we drag the *Datetime
 
 <br>
 
-#### Percentage of Earthquakes by Broad Location
+#### Percentage of Earthquakes by Location Broad
 
 For our next feature, we are again going to create a table. On a new worksheet, we will drag our *Location-Broad* variable onto the Rows section. To add the percentages, however, we're going to need another calculated field. Our first approach here might be to start with a count of the *Id* variable before adjusting to percentage values, but as this is being treated as a dimension, rather than a measure, Tableau is unable to count this effectively. At this point, we could just convert *Id* to a measure. However, it may be useful to have the *Id* variable available as a dimension for other visualisations and, in fact, we have already used it as such in our top 10 list.
 
@@ -157,7 +157,7 @@ However, the points on the map are still a little hard to differentiate, so it c
 
 For the next step on this visualisation, let's first improve the interactivity of our map. There are already a number of data labels present in the tooltip for each earthquake plotted on the map. However, for some more obscure regions, or for when the map is very zoomed out, it may also be useful to add a location to help the user's unserstanding. We can do this very quickly by dragging the *Location* variable on to the Tooltip icon in the Marks section. Finally, we will, once again, add our date filter using the same steps we followed when building our initial chart.
 
-![alt text](/img/posts/earthquake-map.jpg "Map of Earthquake Locations and their Intensity")
+![alt text](/img/posts/tableau-map-image.png "Map of Earthquake Locations and their Intensity")
 
 <br>
 <br>
