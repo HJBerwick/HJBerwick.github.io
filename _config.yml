@@ -22,7 +22,7 @@ avatar_image: /img/profile_picture_square_colour.jpg
 
 #-------------------------------
 # Contact links
-linkedIn: "https://www.linkedin.com/in/henry-berwick/"
+linkedin: "https://www.linkedin.com/in/henry-berwick/"
 github: "https://github.com/HJBerwick"
 
 paginate: 12
