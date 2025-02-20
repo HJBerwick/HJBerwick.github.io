@@ -33,7 +33,7 @@ Now that we have our range of values to check, we also need to create somewhere 
 primes_list = []
 ```
 
-Let's now start to code up the logic we can use to check for prime numbers within our range of integers. Later on we will be able to use this logic to build out our while loop to iterate through all possible values, but for now we can iterate manually to make sure this works for the simplest cases. This also allows us to iron out any issues before we let this run through everything on its own where any errors may be harder to understand.
+Let's now start to code up the logic we can use to check for prime numbers within our range of integers. Later on, we will be able to use this logic to build out our while loop to iterate through all possible values, but for now we can iterate manually to make sure this works for the simplest cases. This also allows us to iron out any issues before we let this run through everything on its own where any errors may be harder to understand.
 
 To start with, we want to extract the first value from our set of numbers (called **number_range**) and check whether this is prime. If so, we can add this to our list of prime numbers (handily named **primes_list**), but if not, we can then discard this number.
 
@@ -76,7 +76,7 @@ print(multiples)
 >> {4, 6, 8, 10, 12, 14, 16, 18, 20}
 ```
 
-This brings us to the key functionality we referenced above, which really underpins our approach.This functionality is the **difference_update** method for sets which will remove any elements from our set that are also found to be present in a comparison set. For our purposes, this means we can remove any values from our **number_range** set which are also listed as **multiples** of our previously found prime number. Given that these multiples are divisible by more than just themselves and 1, we know they are not prime and so we can happily discard these values.
+This brings us to the key functionality we referenced above, which really underpins our approach. This functionality is the **difference_update** method for sets which will remove any elements from our set that are also found to be present in a comparison set. For our purposes, this means we can remove any values from our **number_range** set which are also listed as **multiples** of our previously found prime number. Given that these multiples are divisible by more than just themselves and 1, we know they are not prime and so we can happily discard these values.
 
 Before we apply the **difference_update**, we can visually compare our two sets.
 
