@@ -49,7 +49,7 @@ To make this assessment, we're going to apply a Chi-Square Test for Independence
 
 * The resulting test statistic for both tests will be the same
 * The Chi-Square Test can be represented using 2x2 tables of data - meaning it can be easier to explain to stakeholders
-* The Chi-Square Test can extend out to more than 2 groups - meaning the client can have one consistent approach to measuring signficance
+* The Chi-Square Test can extend out to more than 2 groups - meaning the client can have one consistent approach to measuring significance
 
 We'll cover the Chi-Square Test for Independence in more detail in the dedicated section later on in this post.
 
@@ -128,9 +128,9 @@ The aim of the Hypothesis Test is to look for evidence to support or reject the 
 
 In a Hypothesis Test, before we collect any data or run any numbers - we specify an Acceptance Criteria. This is a p-value threshold at which we’ll decide to reject or support the null hypothesis. It is essentially a line we draw in the sand saying "if I was to run this test many many times, what proportion of those times would I want to see different results come out, in order to feel comfortable, or confident, that my results are not just some unusual occurrence".
 
-Conventionally, we set our Acceptance Criteria to 0.05 - but this does not have to be the case.  If we need to be more confident that something did not occur through chance alone, we could lower this value down to something much smaller, meaning that we only come to the conclusion that the outcome was special or rare if it’s extremely rare.
+Conventionally, we set our Acceptance Criteria to 0.05 - but this does not have to be the case. If we need to be more confident that something did not occur through chance alone, we could lower this value down to something much smaller, meaning that we only come to the conclusion that the outcome was special or rare if it’s extremely rare.
 
-So to summarise, in a Hypothesis Test, we test the Null Hypothesis using a p-value and then decide it’s fate based on the Acceptance Criteria.
+So to summarise, in a Hypothesis Test, we test the Null Hypothesis using a p-value and then decide its fate based on the Acceptance Criteria.
 
 <br>
 
@@ -146,17 +146,17 @@ In the case of our task here, where we are looking to understand the difference 
 
 The Chi-Square Test For Independence is a type of Hypothesis Test that assumes observed frequencies for categorical variables will match the expected frequencies.
 
-The *assumption* is that the Null Hypothesis is, as discussed above, always the viewpoint that the two groups will be equal. With the Chi-Square Test For Independence we look to calculate a statistic which, based on the specified Acceptance Criteria, will mean we either reject or support this initial assumption.
+The *assumption* is that the Null Hypothesis is, as discussed above, always the viewpoint that the two groups will be equal. With the Chi-Square Test For Independence, we look to calculate a statistic which, based on the specified Acceptance Criteria, will mean we either reject or support this initial assumption.
 
 The *observed frequencies* are the true values that we’ve seen.
 
 The *expected frequencies* are essentially what we would *expect* to see based on all of the data.
 
-**Note:** Another option when comparing "rates" is a test known as the *Z-Test For Proportions*.  While, we could absolutely use this test here, we have chosen the Chi-Square Test For Independence because:
+**Note:** Another option when comparing "rates" is a test known as the *Z-Test For Proportions*. While we could absolutely use this test here, we have chosen the Chi-Square Test For Independence because:
 
 * The resulting test statistic for both tests will be the same
 * The Chi-Square Test can be represented using 2x2 tables of data - meaning it can be easier to explain to stakeholders
-* The Chi-Square Test can extend out to more than 2 groups - meaning the business can have one consistent approach to measuring signficance
+* The Chi-Square Test can extend out to more than 2 groups - meaning the business can have one consistent approach to measuring significance
 
 <br>
 <br>
@@ -223,7 +223,7 @@ ___
 
 To kick off our Hypothesis Test, we first need to make sure we have clearly stated our Null Hypothesis, Alternate Hypothesis, and the Acceptance Criteria as described in the section above.
 
-We will code these in explcitly and clearly so we can utilise them later to explain the results. We specify the common Acceptance Criteria value of 0.05.
+We will code these in explicitly and clearly so we can utilise them later to explain the results. We specify the common Acceptance Criteria value of 0.05.
 
 ```python
 # specify hypotheses & acceptance criteria for test
@@ -280,9 +280,9 @@ Taking the observed values, we can calculate the signup rate of each group:
 
 These observed values suggest that the higher cost/quality of Mailer 2 does positively impact the signup rate for the Delivery Club. However, only once we have performed the Chi-Square Test for Independence will we be able to better understand how confidently we can say that this conclusion is robust, or whether it may have occurred by chance.
 
-After applying the test, we have a Chi-Square Statistic of **1.94** and a p-value of **0.16**.  The critical value for our specified Acceptance Criteria of 0.05 can be calculated as **3.84**.
+After applying the test, we have a Chi-Square Statistic of **1.94** and a p-value of **0.16**. The critical value for our specified Acceptance Criteria of 0.05 can be calculated as **3.84**.
 
-**Note:** When applying the Chi-Square Test above, we use the parameter *correction = False* which means we are applying what is known as the *Yate's Correction*, which is applied when your Degrees of Freedom is equal to one. This correction helps to prevent overestimation of statistical signficance in this case.
+**Note:** When applying the Chi-Square Test above, we use the parameter *correction = False* which means we are applying what is known as the *Yate's Correction*, which is applied when your Degrees of Freedom is equal to one. This correction helps to prevent overestimation of statistical significance in this case.
 
 <br>
 <br>
@@ -293,7 +293,7 @@ ___
 
 We now have everything we need to interpret the results of our Chi-Square Test and make the appropriate conclusions.
 
-From our results, we can see that, since our resulting p-value of **0.16** is *greater* than our Acceptance Criteria of 0.05 then we will *retain* the Null Hypothesis and conclude that there is not sufficient evidence that the observed difference occurs due to anything other than chance. Thus we determine there is no significant difference between the signup rates of Mailer 1 and Mailer 2.
+From our results, we can see that, since our resulting p-value of **0.16** is *greater* than our Acceptance Criteria of 0.05 then we will *retain* the Null Hypothesis and conclude that there is not sufficient evidence that the observed difference occurs due to anything other than chance. Thus, we determine there is no significant difference between the signup rates of Mailer 1 and Mailer 2.
 
 We could also make the same conclusion based upon our resulting Chi-Square statistic of **1.94** being *lower* than our Critical Value of **3.84**.
 
