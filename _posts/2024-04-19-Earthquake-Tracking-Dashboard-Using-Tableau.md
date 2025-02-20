@@ -29,7 +29,7 @@ ___
 
 ### Context <a name="overview-context"></a>
 
-Our client would like to better analyse and visualise global earthquake patterns. To do this,they have provided us with a 30-day sample of data and have asked that we build an initial proof of concept. This would need to take the form of a single dashboard which includes the following features:
+Our client would like to better analyse and visualise global earthquake patterns. To do this, they have provided us with a 30-day sample of data and have asked that we build an initial proof of concept. This would need to take the form of a single dashboard which includes the following features:
 
 * A list of the top 10 largest earthquakes
 * A breakdown of the percentage of earthquakes that occurred in each broad location
@@ -103,7 +103,7 @@ To ensure our list is only showing the top 10 largest earthquakes we will create
 INDEX() <= 10
 ```
 
-The use of INDEX here is a table calculation that returns the row number and effectively means our newly calculated field acts as a boolean True/False variable. Now that this has been created, we can drag it onto our Filters section and select "True" in the pop up window to ensure we only see rows 10 and under in the table.
+The use of INDEX here is a table calculation that returns the row number and effectively means our newly calculated field acts as a Boolean True/False variable. Now that this has been created, we can drag it onto our Filters section and select "True" in the pop-up window to ensure we only see rows 10 and under in the table.
 
 Next, we can add *Location* to our table, and we will do this by dragging the variable onto our Rows area. We then need to format our *Magnitude* column. We will first drag over *Measure Names* to our values column to give it a title, remembering to remove the second instance of the variable in our Columns section that is added automatically. We can then click into our *Measure Values* icon in the Marks section to format our values as whole numbers.
 
@@ -168,11 +168,11 @@ ___
 
 We have now built all our individual elements to meet the requirements of our client. Our final step is to pull these all into a single dashboard and ensure it is visually appealing.
 
-To start, we will create a new dashboard from the taskbar at the bottom of the page. We can then see each of our worksheets listed on the left hand side, each ready to be dragged into place. Before we do this, let's give our dashboard a title, and to do so we can just give our tab a name and then check the "Show dashboard title" box in the bottom left of the page. We can then format this and move it to the appropriate position.
+To start, we will create a new dashboard from the taskbar at the bottom of the page. We can then see each of our worksheets listed on the left-hand side, each ready to be dragged into place. Before we do this, let's give our dashboard a title, and to do so we can just give our tab a name and then check the "Show dashboard title" box in the bottom left of the page. We can then format this and move it to the appropriate position.
 
-We are now ready to add our worksheets to the dashboard, and we will ensure that the "Tiled" layout is selected in the bottom left. This will ensure that our charts snap nicely into position without the need to spend lots of time lining things up. We can then drag each chart into the desired location on the dashboard. It is worth noting at this point, that each chart will bring across its own filters and legends to the panel on the right hand side, so we can also remove any of these that aren't required.
+We are now ready to add our worksheets to the dashboard, and we will ensure that the "Tiled" layout is selected in the bottom left. This will ensure that our charts snap nicely into position without the need to spend lots of time lining things up. We can then drag each chart into the desired location on the dashboard. It is worth noting at this point, that each chart will bring across its own filters and legends to the panel on the right-hand side, so we can also remove any of these that aren't required.
 
-The one filter we know to be key is our date filter, and we can now look to apply a single version of this to all of our charts. We can do this by choosing the "Apply to Worksheets" option from the More Options menu for the relevant filter, and selecting all the worksheets we have added to the dashboard. Once this is complete, we can also look to make better use of the space on our dashboard by, once again, navigating to the More Options menu, and selecting "Floating". This will allow us to move and resize our filter, and also increase the space provided to our charts, which was previously taken up by the filter panel on the right hand side.
+The one filter we know to be key is our date filter, and we can now look to apply a single version of this to all of our charts. We can do this by choosing the "Apply to Worksheets" option from the More Options menu for the relevant filter and selecting all the worksheets we have added to the dashboard. Once this is complete, we can also look to make better use of the space on our dashboard by, once again, navigating to the More Options menu, and selecting "Floating". This will allow us to move and resize our filter, and also increase the space provided to our charts, which was previously taken up by the filter panel on the right-hand side.
 
 Now let's ensure it looks visually appealing. Firstly, we can right click in any empty space around our tables and charts and ensure it fits the "Entire View", or tile, we have placed this in. We can then look to adjust our colouring. In this case, we will change our dashboard and chart backgrounds to be black, ensure all text is white, and then further format and colour any titles, borders, grid lines, bars, etc, as desired. For some items, such as colouring the bars of our location analysis chart, we may need to go back to the source worksheet itself to adjust these.
 
