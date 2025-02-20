@@ -2,7 +2,7 @@
 layout: post
 title: Earthquake Tracking Dashboard Using Tableau
 image: "/posts/earthquake_header_new.png"
-tags: [Tableau, Data Viz]
+tags: [Tableau, Data Visualisation]
 ---
 
 In this project, I'm going to discuss how we can use Tableau to create an earthquake tracking dashboard in order to help our client better analyse and visualise global earthquake patterns.
