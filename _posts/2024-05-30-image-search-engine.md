@@ -35,7 +35,7 @@ ___
 
 Our client had been analysing their customer feedback, and one thing in particular came up a number of times.
 
-Their customers are aware that they have a great range of competitively priced products in the clothing section, but have said they are struggling to find the products they are looking for on the website.
+Their customers are aware that they have a great range of competitively priced products in the clothing section but have said they are struggling to find the products they are looking for on the website.
 
 They are often buying much more expensive products, and then later finding out that our client actually stocked a very similar, but lower-priced alternative.
 
@@ -47,29 +47,29 @@ Based upon our work for them using a Convolutional Neural Network, they want to 
 
 Here we are going to implement the pre-trained VGG16 network. However, instead of just the final MaxPooling layer, we will also add in a **Global Average Pooling Layer** at the end of the VGG16 architecture meaning the output of the network will be a single vector of numeric information rather than many arrays. We use "feature vector" to compare image similarity.
 
-We will preprocess our 300 base-set images, and then pass them through the VGG16 network to extract their feature vectors. We then store these in an object for use when a search image is fed in.
+We will preprocess our 300 base-set images and then pass them through the VGG16 network to extract their feature vectors. We then store these in an object for use when a search image is fed in.
 
 When we pass in a search image, we will apply the same preprocessing steps and again extract the feature vector.
 
-We use Cosine Similarity to compare the search feature vector with all base-set feature vectors, and return the N smallest values. These represent our "most similar" images, which would be the ones returned to the customer.
+We use Cosine Similarity to compare the search feature vector with all base-set feature vectors and return the N smallest values. These represent our "most similar" images, which would be the ones returned to the customer.
 
 <br>
 
 ### Results <a name="overview-results"></a>
 
-We tested two different images, and plotted the search results along with the cosine similarity scores. You can see these in the dedicated section below.
+We tested two different images and plotted the search results along with the cosine similarity scores. You can see these in the dedicated section below.
 
 <br>
 
 ### Discussion, Growth & Next Steps <a name="overview-growth"></a>
 
-The way we have coded this up is very much for a "proof of concept". In practice, we would isolate the last section of the code (where we submit a search), and run this from all of the saved objects that we need. We wouldn't include it in a single script like we have here.
+The way we have coded this up is very much for a "proof of concept". In practice, we would isolate the last section of the code (where we submit a search) and run this from all of the saved objects that we need. We wouldn't include it in a single script like we have here.
 
 Also, rather than having to fit the Nearest Neighbours to our *feature_vector_store* each time a search is submitted, we could store that object as well.
 
 When applying this in production, we also may want to code up a script that easily adds or removes images from the feature store. The products that are available in the client's store would be changing all the time, so we'd want a nice easy way to add new feature vectors to the feature_vector_store object, and also potentially a way to remove search results coming back if that product was out of stock, or no longer part of the suite of products that were sold.
 
-Most likely, in production, this would just return a list of filepaths that the client's website could then pull forward as required. The matplotlib code is just for us to see it in action manually.
+Most likely, in production, this would just return a list of file paths that the client's website could then pull forward as required. The matplotlib code is just for us to see it in action manually.
 
 This was only tested in one category. However, we would also want to test on a broader array of categories, most likely having a saved network for each to avoid irrelevant predictions.
 
@@ -92,7 +92,7 @@ We have been provided with images of the 300 shoes that are currently available 
 
 ![alt text](/img/posts/search-engine-image-examples.png "Deep Learning Search Engine - Image Examples")
 
-We will need to extract and capture the "features" of this base image set, and compare them to the "features" found in any given search image. The images with the closest match will be returned to the customer.
+We will need to extract and capture the "features" of this base image set and compare them to the "features" found in any given search image. The images with the closest match will be returned to the customer.
 
 <br>
 <br>
@@ -125,7 +125,7 @@ All the hard work has been done, we just want to "transfer" those "learnings" to
 
 #### Nuanced Application
 
-When using Transfer Learning for image classification tasks, we often import the architecture up to the final Max Pooling layer, prior to flattening, the Dense Layers, and the Output Layer. This means we can use the frozen parameter values from the bottom of the network, and then take forward the final Max Pooling layer.
+When using Transfer Learning for image classification tasks, we often import the architecture up to the final Max Pooling layer, prior to flattening, the Dense Layers, and the Output Layer. This means we can use the frozen parameter values from the bottom of the network and then take forward the final Max Pooling layer.
 
 With this approach, the final MaxPooling layer will be in the form of a number of pooled feature maps. For our task here, however, we don't want that. We instead want a *single set* of numbers to represent these features and thus we add in a **Global Average Pooling Layer** at the end of the VGG16 architecture, meaning the output of the network will be a single array of numeric information rather than many arrays.
 
@@ -140,7 +140,7 @@ Keras makes the use of VGG16 very easy. We download the bottom of the VGG16 netw
 
 In the code below, we will:
 
-* Import the required packaages
+* Import the required packages
 * Set up the image parameters required for VGG16
 * Load in VGG16 with Global Average Pooling
 * Save the network architecture and weights for use in the search engine
@@ -369,7 +369,7 @@ search_feature_vector = featurise_image(preprocessed_image)
 
 #### Locate Most Similar Images Using Cosine Similarity
 
-At this point, our search image exists as a 512 length feature vector, and we need to compare that feature vector to the feature vectors of all our base images.
+At this point, our search image exists as a 512-length feature vector, and we need to compare that feature vector to the feature vectors of all our base images.
 
 When that is done, we need to understand which of those base image feature vectors are most similar to the feature vector of our search image. More specifically, we need to return the eight most closely matched, as that is what we specified above.
 
@@ -382,8 +382,8 @@ By calculating this score between our search image vector and each of our base i
 In the code below, we will:
 
 * Instantiate the Nearest Neighbours logic and specify our metric as Cosine Similarity
-* Apply this to our *feature_vector_store* object (that contains a 512 length feature vector for each of our 300 base-set images)
-* Pass in our *search_feature_vector* object into the fitted Nearest Neighbors object. This will find the eight nearest base feature vectors, and for each it will return (a) the cosine distance, and (b) the index of that feature vector from our *feature_vector_store* object.
+* Apply this to our *feature_vector_store* object (that contains a 512-length feature vector for each of our 300 base-set images)
+* Pass in our *search_feature_vector* object into the fitted NearestNeighbors object. This will find the eight nearest base feature vectors, and for each it will return (a) the cosine distance, and (b) the index of that feature vector from our *feature_vector_store* object.
 * Convert the outputs from arrays to lists (for ease when plotting the results)
 * Create a list of filenames for the eight most similar base-set images
 
@@ -411,7 +411,7 @@ search_result_files = [filename_store[i] for i in image_indices]
 
 We now have all of the information about the eight most similar images to our search image. Let's see how well it worked by plotting those images.
 
-We plot them in order from most similar to least similar, and include the cosine distance score for reference (smaller is closer, or more similar).
+We plot them in order from most similar to least similar and include the cosine distance score for reference (smaller is closer, or more similar).
 
 ```python
 # plot search results
@@ -457,13 +457,13 @@ ___
 
 # Discussion, Growth & Next Steps <a name="growth-next-steps"></a>
 
-The way we have coded this up is very much for a "proof of concept". In practice, we would isolate the last section of the code (where we submit a search), and run this from all of the saved objects that we need. We wouldn't include it in a single script like we have here.
+The way we have coded this up is very much for a "proof of concept". In practice, we would isolate the last section of the code (where we submit a search) and run this from all of the saved objects that we need. We wouldn't include it in a single script like we have here.
 
 Also, rather than having to fit the Nearest Neighbours to our *feature_vector_store* each time a search is submitted, we could store that object as well.
 
 When applying this in production, we also may want to code up a script that easily adds or removes images from the feature store. The products that are available in the client's store would be changing all the time, so we'd want a nice easy way to add new feature vectors to the feature_vector_store object, and also potentially a way to remove search results coming back if that product was out of stock, or no longer part of the suite of products that were sold.
 
-Most likely, in production, this would just return a list of filepaths that the client's website could then pull forward as required. The matplotlib code is just for us to see it in action manually.
+Most likely, in production, this would just return a list of file paths that the client's website could then pull forward as required. The matplotlib code is just for us to see it in action manually.
 
 This was only tested in one category. However, we would also want to test on a broader array of categories, most likely having a saved network for each to avoid irrelevant predictions.
 
