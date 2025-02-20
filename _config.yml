@@ -9,7 +9,7 @@ plugins:
 #-------------------------------
 # General Site Settings
 title: Henry Berwick
-description: "Hello and welcome to my portfolio! My name is Henry, and I'm a Data Scientist. Below you will find a range of interesting projects, which I have recently undertaken. Each of these has a strong emphasis on business impact, and showcases my skills as a Data Scientist, such as Data Visualisation, Python, AB Testing, Machine Learning, Deep Learning, and more. Please visit my Github & LinkedIn pages (or download my Resume) by using the links below!"
+description: "Hello and welcome to my portfolio! Below you will find a range of interesting Data Science projects, which I have recently undertaken. Each of these has a strong emphasis on business impact, and showcases my skills as a Data Scientist, including Data Visualisation, Python, A/B Testing, Machine Learning, Deep Learning, and more. Please visit my Github & LinkedIn pages (or download my Resume) by using the links below!"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
