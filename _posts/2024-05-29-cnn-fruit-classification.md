@@ -45,7 +45,7 @@ The only thing they hadn't figured out was how to actually identify each product
 
 We were asked to assess the viability of this proposal by working on a proof of concept. To do so, we were given some sample images of fruits from their processing platform.
 
-If this was successful and put into place on a larger scale, the client would be able to enhance their sorting and delivery processes.
+If this were successful and put into place on a larger scale, the client would be able to enhance their sorting and delivery processes.
 
 <br>
 
@@ -55,13 +55,13 @@ We will utilise the *Keras* Deep Learning library for this task.
 
 Our first task is to create our pipeline for feeding training and validation images in batches, from our local directory, into the network. We will investigate and quantify predictive performance epoch by epoch on the validation set, and then also on a held back test set.
 
-Our baseline network is simple, but gives us a starting point to refine from. This network will contain **2 Convolutional Layers**, each with **32 filters** and subsequent **Max Pooling** Layers. We will have a **single Dense (Fully Connected) layer** following flattening, with **32 neurons** followed by our output layer. We apply the **relu** activation function on all layers, and use the **adam** optimizer.
+Our baseline network is simple but gives us a starting point to refine from. This network will contain **2 Convolutional Layers**, each with **32 filters** and subsequent **Max Pooling** Layers. We will have a **single Dense (Fully Connected) layer** following flattening, with **32 neurons** followed by our output layer. We apply the **relu** activation function on all layers and use the **adam** optimizer.
 
 Our first refinement is to add **Dropout** to tackle the issue of overfitting which is prevalent in the baseline network performance. We will use a **dropout rate of 0.5**.
 
 We will then add in **Image Augmentation** to our data pipeline to increase the variation of input images for the network to learn from, resulting in a more robust results, as well as also address overfitting.
 
-With these additions in place, we can then utlise *keras-tuner* to optimise our network architecture and tune the hyperparameters. The best network from this testing contains **3 Convolutional Layers**, each followed by **Max Pooling** Layers. The first Convolutional Layer has **96 filters**, while the second and third have **64 filters**. The output of this third layer is flattened and passed to a **single Dense (Fully Connected) layer** with **160 neurons**. The Dense Layer has **Dropout** applied with a **dropout rate of 0.5**. The output from this is passed to the output layer. Again, we apply the **relu** activation function on all layers, and use the **adam** optimizer.
+With these additions in place, we can then utilise *Keras Tuner* to optimise our network architecture and tune the hyperparameters. The best network from this testing contains **3 Convolutional Layers**, each followed by **Max Pooling** Layers. The first Convolutional Layer has **96 filters**, while the second and third have **64 filters**. The output of this third layer is flattened and passed to a **single Dense (Fully Connected) layer** with **160 neurons**. The Dense Layer has **Dropout** applied with a **dropout rate of 0.5**. The output from this is passed to the output layer. Again, we apply the **relu** activation function on all layers and use the **adam** optimizer.
 
 Finally, we will utilise **Transfer Learning** to compare our network's results against that of the pre-trained **VGG16** network.
 
@@ -81,9 +81,9 @@ In terms of Classification Accuracy on the Test Set, we saw:
 * Optimised Architecture + Dropout + Image Augmentation: **95%**
 * Transfer Learning Using VGG16: **98%**
 
-Tuning the networks architecture with Keras-Tuner gave us a great boost, but was also very time intensive. However, if this time investment results in improved accuracy, then it is time well spent.
+Tuning the network's architecture with Keras Tuner gave us a great boost but was also very time intensive. However, if this time investment results in improved accuracy, then it is time well spent.
 
-The use of Transfer Learning with the VGG16 architecture was also a great success. In only 10 epochs we were able to beat the performance of our smaller, custom networks which were training over 50 epochs. From a business point of view we also need to consider the overheads of (a) storing the much larger VGG16 network file, and (b) any increased latency on inference.
+The use of Transfer Learning with the VGG16 architecture was also a great success. In only 10 epochs we were able to beat the performance of our smaller, custom networks which were training over 50 epochs. From a business point of view, we also need to consider the overheads of (a) storing the much larger VGG16 network file, and (b) any increased latency on inference.
 
 <br>
 
@@ -91,7 +91,7 @@ The use of Transfer Learning with the VGG16 architecture was also a great succes
 
 The proof of concept was successful as we have shown that we can get very accurate predictions, albeit on a small number of classes. We need to showcase this to the client, discuss what it is that makes the network more robust, and then look to test our best networks on a larger array of classes.
 
-Transfer Learning has been a big success, and was the best performing network in terms of classification accuracy on the Test Set. However, we still only trained for a small number of epochs so we can push this even further. It would be worthwhile testing other available pre-trained networks such as ResNet, Inception, and the DenseNet networks.
+Transfer Learning has been a big success and was the best performing network in terms of classification accuracy on the Test Set. However, we still only trained for a small number of epochs so we can push this even further. It would be worthwhile testing other available pre-trained networks such as ResNet, Inception, and the DenseNet networks.
 
 <br>
 <br>
@@ -119,7 +119,7 @@ ___
 
 # Data Pipeline  <a name="data-pipeline"></a>
 
-Before we get to building the network architecture, and subsequently training and testing it, we need to set up a pipeline for our images to flow through, from our local hard-drive where they are located, to, and through our network.
+Before we get to building the network architecture, and subsequently training and testing it, we need to set up a pipeline for our images to flow through, from our local hard drive where they are located, to, and through our network.
 
 In the code below, we will:
 
@@ -167,7 +167,7 @@ To start with, we simply use the generators to rescale the raw pixel values (ran
 
 We will add more logic to the training set generator to apply Image Augmentation.
 
-With this pipeline in place, our images will be extracted, in batches of 32, from our hard-drive, where they're being stored and sent into our model for training.
+With this pipeline in place, our images will be extracted, in batches of 32, from our hard drive, where they're being stored and sent into our model for training.
 
 <br>
 <br>
@@ -176,7 +176,7 @@ ___
 
 # Convolutional Neural Network Overview <a name="cnn-overview"></a>
 
-Convolutional Neural Networks (CNN) are an adaptation of Artificial Neural Networks and are primarily used for image based tasks.
+Convolutional Neural Networks (CNN) are an adaptation of Artificial Neural Networks and are primarily used for image-based tasks.
 
 To a computer, an image is simply made up of numbers, those being the colour intensity values for each pixel. Colour images have values ranging between 0 and 255 for each pixel, but have three of these values, one each for Red, Green, and Blue, or in other words the RGB values that mix together to make up the specific colour of each pixel.
 
@@ -184,13 +184,13 @@ These pixel values are the *input* for a Convolutional Neural Network. It needs 
 
 The pixel values themselves don't hold much useful information on their own, so the network needs to turn them into *features*, much like we do as humans.
 
-A big part of this process is called **Convolution** where each input image is scanned over, and compared to many different, and smaller filters, to compress the image down into something more generalised. This process not only helps reduce the problem space, it also helps reduce the network's sensitivy to minor changes, in other words to know that two images are of the same object, even though the images are not *exactly* the same.
+A big part of this process is called **Convolution** where each input image is scanned over, and compared to many different, and smaller filters, to compress the image down into something more generalised. This process not only helps reduce the problem space, but it also helps reduce the network's sensitivity to minor changes, in other words to know that two images are of the same object, even though the images are not *exactly* the same.
 
-A somewhat similar process, called **Pooling**, is also applied to faciliate this *generalisation* even further. A CNN can contain many of these Convolution and Pooling layers, with deeper layers finding more abstract features.
+A somewhat similar process, called **Pooling**, is also applied to facilitate this *generalisation* even further. A CNN can contain many of these Convolution and Pooling layers, with deeper layers finding more abstract features.
 
 Similar to Artificial Neural Networks, Activation Functions are applied to the data as it moves forward through the network, helping the network decide which neurons will fire, or in other words, helping the network understand which neurons are more or less important for different features, and ultimately which neurons are more or less important for the different output classes.
 
-Over time, as a Convolutional Neural Network trains, it iteratively calculates how well it is predicting on the known classes we pass it (known as the **loss** or **cost**), then heads back through in a process known as **Back Propagation** to update the paramaters within the network, in a way that reduces the error, or in other words, improves the match between predicted outputs and actual outputs. Over time, it learns to find a good mapping between the input data, and the output classes.
+Over time, as a Convolutional Neural Network trains, it iteratively calculates how well it is predicting on the known classes we pass it (known as the **loss** or **cost**), then heads back through in a process known as **Back Propagation** to update the parameters within the network, in a way that reduces the error, or in other words, improves the match between predicted outputs and actual outputs. Over time, it learns to find a good mapping between the input data, and the output classes.
 
 There are many parameters that can be changed within the architecture of a Convolutional Neural Network, as well as clever logic that can be included, all which can affect the predictive accuracy. We will discuss and put in place many of these below.
 
@@ -205,7 +205,7 @@ ___
 
 #### Network Architecture
 
-Our baseline network is simple, but gives us a starting point to refine from. This network contains **2 Convolutional Layers**, each with **32 filters** and subsequent **Max Pooling** Layers. We have a **single Dense (Fully Connected) layer**, following flattening, with **32 neurons** followed by our output layer. We apply the **relu** activation function on all layers, and use the **adam** optimizer.
+Our baseline network is simple but gives us a starting point to refine from. This network contains **2 Convolutional Layers**, each with **32 filters** and subsequent **Max Pooling** Layers. We have a **single Dense (Fully Connected) layer**, following flattening, with **32 neurons** followed by our output layer. We apply the **relu** activation function on all layers and use the **adam** optimizer.
 
 ```python
 # network architecture
@@ -304,7 +304,7 @@ history = model.fit(x = training_set,
                     callbacks = [save_best_model])
 ```
 
-The ModelCheckpoint callback that has been put in place means that we do not just save the *final* network at epoch 50, but instead we save the *best* network, in terms of validation set performance, from *any point* during training. In other words, at the end of each of the 50 epochs, Keras will assess the performance on the validation set and if it has not seen any improvement in performance, it will do nothing. If it does see an improvement, however, it will update the network file that is saved on our hard-drive.
+The ModelCheckpoint callback that has been put in place means that we do not just save the *final* network at epoch 50, but instead we save the *best* network, in terms of validation set performance, from *any point* during training. In other words, at the end of each of the 50 epochs, Keras will assess the performance on the validation set and if it has not seen any improvement in performance, it will do nothing. If it does see an improvement, however, it will update the network file that is saved on our hard drive.
 
 <br>
 
@@ -355,7 +355,7 @@ Above, we assessed our model's performance on both the training set and the vali
 
 Here, we will get a view of how well our network performs when predicting on data that had *no part* in the training process whatsoever - our test set.
 
-A test set can be extremely useful when looking to assess many different iterations of a network we build. Where the validation set might be sent through the model in slightly different orders during training in order to assess the epoch by epoch performance, our test set is a *static set* of images. As a result, it makes for a really good baseline for testing the first iteration of our network versus any subsequent versions that we create, perhaps after we refine the architecture, or add any other clever bits of logic that we think might help the network perform better in the real world.
+A test set can be extremely useful when looking to assess many different iterations of a network we build. Where the validation set might be sent through the model in slightly different orders during training to assess the epoch-by-epoch performance, our test set is a *static set* of images. As a result, it makes for a really good baseline for testing the first iteration of our network versus any subsequent versions that we create, perhaps after we refine the architecture, or add any other clever bits of logic that we think might help the network perform better in the real world.
 
 In the below code we run this in isolation from training. We:
 
@@ -426,7 +426,7 @@ for folder in folder_names:
         predicted_probabilities.append(predicted_probability)
         filenames.append(image)
         
-# create dataframe to analyse
+# create DataFrame to analyse
 predictions_df = pd.DataFrame({"actual_label" : actual_labels,
                                "predicted_label" : predicted_labels,
                                "predicted_probability" : predicted_probabilities,
@@ -454,7 +454,7 @@ In our data we have:
 * **Filename:** The test set image on our local drive (for reference)
 * **Correct:** A flag showing whether the predicted label is the same as the actual label
 
-This dataset is extremely useful, as we can not only calculate our classification accuracy, but we can also deep-dive into images where the network was struggling to predict and try to assess why, leading to us improving our network, and potentially our input data.
+This dataset is extremely useful, as we can not only calculate our classification accuracy, but we can also deep dive into images where the network was struggling to predict and try to assess why, leading to us improving our network, and potentially our input data.
 
 <br>
 
@@ -499,7 +499,7 @@ lemon              0.2      0.0     0.7   0.0    1.0     0.1
 orange             0.0      0.0     0.0   0.1    0.0     0.8
 ```
 
-Along the top are our *actual* classes and down the side are our *predicted* classes. So counting *down* the columns we can get the Classification Accuracy (%) for each class, and we can see where it is getting confused.
+Along the top are our *actual* classes and down the side are our *predicted* classes. So, counting *down* the columns we can get the Classification Accuracy (%) for each class, and we can see where it is getting confused.
 
 So, while overall our test set accuracy was 75%, for each individual class, we see:
 
@@ -537,15 +537,15 @@ In a full network, i.e. where Dropout is not being applied, each of the combinat
 
 If we *drop out* neurons during training, *other* neurons need to jump in fill in for this particular role of detecting those features. They essentially have to come in at late notice and cover the ignored neurons job, dealing with that particular representation that is so useful for prediction.
 
-Over time, with different combinations of neurons being ignored for each mini-batch of data, the network becomes more adept at generalising, and thus is less likely to overfit to the training data. Since no particular neuron can rely on the presence of other neurons, and the features with which they represent, the network learns more robust features, and are less susceptible to noise.
+Over time, with different combinations of neurons being ignored for each mini batch of data, the network becomes more adept at generalising and thus is less likely to overfit to the training data. Since no particular neuron can rely on the presence of other neurons, and the features with which they represent, the network learns more robust features and is less susceptible to noise.
 
-In a Convolutional Neural Network, such as in our task here, it is generally best practice to only apply Dropout to the Dense (Fully Connected) layer or layers, rather than to the Convolutional Layers.  
+In a Convolutional Neural Network, such as in our task here, it is generally best practice to only apply Dropout to the Dense (Fully Connected) layer or layers, rather than to the Convolutional Layers.
 
 <br>
 
 #### Updated Network Architecture
 
-In our task here, we only have one Dense Layer, so we apply Dropout to that layer only. A common proportion to apply, i.e. the proportion of neurons in the layer to be deactivated randomly each pass, is 0.5 or 50%.  We will apply this below:
+In our task here, we only have one Dense Layer, so we apply Dropout to that layer only. A common proportion to apply, i.e. the proportion of neurons in the layer to be deactivated randomly each pass, is 0.5 or 50%. We will apply this below:
 
 ```python
 model = Sequential()
@@ -604,7 +604,7 @@ We run the exact same code as we did for the baseline network, with the only cha
 
 #### Test Set Classification Accuracy
 
-Our baseline network achieved a **75% Classification Accuracy** on the test set. With the addition of Dropout we saw both a reduction in overfitting, and an increased *validation set* accuracy. On the test set, we again see an increase vs the baseline, with an **85% Classification Accuracy**. 
+Our baseline network achieved a **75% Classification Accuracy** on the test set. With the addition of Dropout, we saw both a reduction in overfitting, and an increased *validation set* accuracy. On the test set, we again see an increase vs the baseline, with an **85% Classification Accuracy**. 
 
 <br>
 
@@ -672,7 +672,7 @@ When applying Image Augmentation using Keras' ImageDataGenerator class, we do th
 
 We apply the Image Augmentation logic into the ImageDataGenerator class that exists within our Data Pipeline.
 
-It is important to note that we only ever do this for our training data. We don't apply any transformation on our validation or test sets. The reason for this is that we want our validation and test data be static, and serve us better for measuring our performance over time. If the images in these sets kept changing because of transformations, it would be really hard to understand if our network was actually improving, or if it was just a lucky set of validation set transformations that made it appear that it was performing better.
+It is important to note that we only ever do this for our training data. We don't apply any transformation on our validation or test sets. The reason for this is that we want our validation and test data be static and serve us better for measuring our performance over time. If the images in these sets kept changing because of transformations, it would be really hard to understand if our network was actually improving, or if it was just a lucky set of validation set transformations that made it appear that it was performing better.
 
 When setting up and training the baseline and Dropout networks, we used the ImageGenerator class for only one thing, to rescale the pixel values. Now we will add in the Image Augmentation parameters as well, meaning that as images flow into our network for training, the transformations will also be applied.
 
@@ -694,7 +694,7 @@ validation_generator = ImageDataGenerator(rescale = 1./255)
 
 We apply a **rotation_range** of 20. This is the *degrees* of rotation, and it dictates the *maximum* amount of rotation that we want. In other words, a rotation value will be randomly selected for each image, each epoch, between negative and positive 20 degrees, and whatever is selected, is what will be applied.
 
-We apply a **width_shift_range** and a **height_shift_range** of 0.2. These represent the fraction of the total width and height that we are happy to shift. In other words, we're allowing Keras to shift our image *up to* 20% both vertically and horizonally.
+We apply a **width_shift_range** and a **height_shift_range** of 0.2. These represent the fraction of the total width and height that we are happy to shift. In other words, we're allowing Keras to shift our image *up to* 20% both vertically and horizontally.
 
 We apply a **zoom_range** of 0.1, meaning a maximum of 10% inward or outward zoom.
 
@@ -748,7 +748,7 @@ We run the exact same code as we did for the earlier networks, with the only cha
 
 #### Test Set Classification Accuracy
 
-Our baseline network achieved a **75% Classification Accuracy** on the test set, and our network with Dropout applied achieved **85%**. With the addition of Image Augmentation we saw both a reduction in overfitting, and an increased *validation set* accuracy. On the test set, we again see an increase vs the baseline and Dropout, with a **93% Classification Accuracy**. 
+Our baseline network achieved a **75% Classification Accuracy** on the test set, and our network with Dropout applied achieved **85%**. With the addition of Image Augmentation, we saw both a reduction in overfitting, and an increased *validation set* accuracy. On the test set, we again see an increase vs the baseline and Dropout, with a **93% Classification Accuracy**. 
 
 <br>
 
@@ -811,13 +811,13 @@ One way for us to figure out if there are *better* architectures, would be to ju
 
 As you can imagine, we could start testing all of these things, and noting down performances, but that would be quite messy.
 
-Here we will instead utlise *Keras Tuner* which will make this a whole lot easier for us.
+Here we will instead utilise *Keras Tuner* which will make this a whole lot easier for us.
 
 At a high level, with *Keras Tuner*, we will ask it to test a whole host of different architecture and parameter options, based upon some specifications that we put in place. It will go off and run some tests, and return us all sorts of interesting summary statistics, and of course information about what worked best.
 
 Once we have this, we can then create that particular architecture, train the network just as we've always done, and analyse the performance against our original networks.
 
-Our data pipeline will remain the same as it was when applying Image Augmentation. The code below shows this, as well as the extra packages we need to load for Keras-Tuner.
+Our data pipeline will remain the same as it was when applying Image Augmentation. The code below shows this, as well as the extra packages we need to load for Keras Tuner.
 
 ```python
 # import the required python libraries
@@ -1108,11 +1108,11 @@ ___
 
 Transfer Learning is an extremely powerful way for us to utilise pre-built, and pre-trained networks, and apply these in a clever way to solve *our* specific Deep Learning based tasks. It consists of taking features learned on one problem, and leveraging them on a new, similar problem.
 
-For image based tasks this often means using all the the *pre-learned* features from a large network, so all of the convolutional filter values and feature maps, and instead of using it to predict what the network was originally designed for, piggybacking it, and training just the last part for some other task.
+For image-based tasks this often means using all the *pre-learned* features from a large network, so all of the convolutional filter values and feature maps, and instead of using it to predict what the network was originally designed for, piggybacking it, and training just the last part for some other task.
 
 The hope is, that the features, which have already been learned, will be good enough to differentiate between our new classes, and we’ll save a whole lot of training time (and be able to utilise a network architecture that has potentially already been optimised).
 
-For our Fruit Classification task we will be utilising a famous network known as **VGG16**. This was designed back in 2014, but even by today's standards is a fairly hefty network. It was trained on the famous *ImageNet* dataset, with over a million images across one thousand different image classes. Everything from goldfish, to cauliflowers, to bottles of wine, to scuba divers.
+For our Fruit Classification task, we will be utilising a famous network known as **VGG16**. This was designed back in 2014, but even by today's standards is a fairly hefty network. It was trained on the famous *ImageNet* dataset, with over a million images across one thousand different image classes. Everything from goldfish, to cauliflowers, to bottles of wine, to scuba divers.
 
 ![alt text](/img/posts/vgg16-architecture.png "VGG16 Architecture")
 
@@ -1126,7 +1126,7 @@ All the hard work has been done, we just want to "transfer" those "learnings" to
 
 #### Updated Data Pipeline
 
-Our data pipeline will remain *mostly* the same as it was when applying our own custom built networks, but there are some subtle changes. In the code below we need to import VGG16 and the custom preprocessing logic that it uses. We also need to send our images in with the size 224 x 224 pixels as this is what VGG16 expects. Otherwise, the logic stays as it is.
+Our data pipeline will remain *mostly* the same as it was when applying our own custom-built networks, but there are some subtle changes. In the code below we need to import VGG16 and the custom preprocessing logic that it uses. We also need to send our images in with the size 224 x 224 pixels as this is what VGG16 expects. Otherwise, the logic stays as it is.
 
 ```python
 # import the required python libraries
@@ -1177,7 +1177,7 @@ Keras makes the use of VGG16 very easy. We will download the *bottom* of the VGG
 
 We then need to specify that we *do not* want the imported layers to be re-trained, we want their parameters values to be frozen.
 
-The original VGG16 network architecture contains two massive Dense Layers near the end, each with 4096 neurons. Since our task of classiying 6 types of fruit is more simplistic than the original 1000 ImageNet classes, we reduce this down and instead implement two Dense Layers with 128 neurons each, followed by our output layer.
+The original VGG16 network architecture contains two massive Dense Layers near the end, each with 4096 neurons. Since our task of classifying 6 types of fruit is more simplistic than the original 1000 ImageNet classes, we reduce this down and instead implement two Dense Layers with 128 neurons each, followed by our output layer.
 
 ```python
 # network architecture
@@ -1263,7 +1263,7 @@ Non-trainable params: 14,714,688
 _________________________________________________________________
 ```
 
-Our VGG16 architecture has a total of 17.9 million parameters, much bigger than what we have built so far. Of this, 14.7 million parameters are frozen, and 3.2 million parameters will be updated during each iteration of back-propagation, and these are going to be figuring out exactly how to use those frozen parameters that were learned from the ImageNet dataset, to predict our classes of fruit.
+Our VGG16 architecture has a total of 17.9 million parameters, much bigger than what we have built so far. Of this, 14.7 million parameters are frozen, and 3.2 million parameters will be updated during each iteration of backpropagation, and these are going to be figuring out exactly how to use those frozen parameters that were learned from the ImageNet dataset, to predict our classes of fruit.
 
 <br>
 
@@ -1277,7 +1277,7 @@ We run the exact same code to train this updated network as we did for the basel
 
 As we again saved our training process to the *history* object, we can now analyse and plot the performance (Classification Accuracy, and Loss) of the updated network epoch by epoch.
 
-The below image shows the same two plots we analysed for the tuned network.The first shows the epoch by epoch **Loss** for both the training set (blue) and the validation set (orange). The second shows the epoch by epoch **Classification Accuracy**, again, for both the training set (blue) and the validation set (orange).
+The below image shows the same two plots we analysed for the tuned network. The first shows the epoch by epoch **Loss** for both the training set (blue) and the validation set (orange). The second shows the epoch by epoch **Classification Accuracy**, again, for both the training set (blue) and the validation set (orange).
 
 ![alt text](/img/posts/cnn-vgg16-accuracy-plot.png "VGG16 Accuracy Plot")
 
@@ -1350,9 +1350,9 @@ In terms of Classification Accuracy on the Test Set, we saw:
 * Optimised Architecture + Dropout + Image Augmentation: **95%**
 * Transfer Learning Using VGG16: **98%**
 
-Tuning the network's architecture with Keras-Tuner gave us a great boost, but was also very time intensive. However, if this time investment results in improved accuracy then it is time well spent.
+Tuning the network's architecture with Keras Tuner gave us a great boost but was also very time intensive. However, if this time investment results in improved accuracy, then it is time well spent.
 
-The use of Transfer Learning with the VGG16 architecture was also a great success. In only 10 epochs, we were able to beat the performance of our smaller, custom networks which were training over 50 epochs. From a business point of view we also need to consider the overheads of (a) storing the much larger VGG16 network file, and (b) any increased latency on inference.
+The use of Transfer Learning with the VGG16 architecture was also a great success. In only 10 epochs, we were able to beat the performance of our smaller, custom networks which were training over 50 epochs. From a business point of view, we also need to consider the overheads of (a) storing the much larger VGG16 network file, and (b) any increased latency on inference.
 
 <br>
 <br>
@@ -1363,5 +1363,5 @@ ___
 
 The proof of concept was successful as we have shown that we can get very accurate predictions, albeit on a small number of classes. We need to showcase this to the client, discuss what it is that makes the network more robust, and then look to test our best networks on a larger array of classes.
 
-Transfer Learning has been a big success, and was the best performing network in terms of classification accuracy on the Test Set. However, we still only trained for a small number of epochs so we can push this even further. It would be worthwhile testing other available pre-trained networks such as ResNet, Inception, and the DenseNet networks.
+Transfer Learning has been a big success and was the best performing network in terms of classification accuracy on the Test Set. However, we still only trained for a small number of epochs so we can push this even further. It would be worthwhile testing other available pre-trained networks such as ResNet, Inception, and the DenseNet networks.
 
