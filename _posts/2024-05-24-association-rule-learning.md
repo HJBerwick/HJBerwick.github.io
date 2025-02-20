@@ -33,7 +33,7 @@ ___
 
 ### Context <a name="overview-context"></a>
 
-Our client is looking to reorganise the alcohol section within their store. Customers are often complaining that they can't find the products they want, and are also wanting recommendations about which other products to try. On top of this, their marketing team would like to start running "bundled" promotions, as this has worked well in other areas of the store, but need guidance with selecting which products to put together.
+Our client is looking to reorganise the alcohol section within their store. Customers are often complaining that they can't find the products they want and are also wanting recommendations about which other products to try. On top of this, their marketing team would like to start running "bundled" promotions, as this has worked well in other areas of the store, but need guidance with selecting which products to put together.
 
 They have provided us a sample of 3,500 alcohol transactions. Our task is to see if we can find solutions or insights that might help the business address the aforementioned problems.
 
@@ -45,7 +45,7 @@ Based upon the tasks at hand, we will look to apply Association Rule Learning, s
 
 Our first task is to install the *apyori* package, which contains all of the required functionality for this task.
 
-We will then need to bring in the sample data, and get it into the right format for the Apriori algorithm to deal with.
+We will then need to bring in the sample data and get it into the right format for the Apriori algorithm to deal with.
 
 From there we will be able to apply the Apriori algorithm to provide us with several different relationship metrics, namely:
 
@@ -64,7 +64,7 @@ Interestingly, the strongest relationship existed between two products labelled 
 
 We also saw some strong relationships between different French wines, which again is extremely useful for category managers who are thinking about the best way to lay out the products. Having sections by country, rather than necessarily by type, might make it easier for customers to find what they are after.
 
-Another interesting association is between products labelled "small". At this point, we don't know exactly what that means, but it is certainly something to take back to the client as they may be able to make more sense of it, and turn it into an actionable insight.
+Another interesting association is between products labelled "small". At this point, we don't know exactly what that means, but it is certainly something to take back to the client as they may be able to make more sense of it and turn it into an actionable insight.
 
 We propose to also build a "search engine" for category managers where they can look up products by keyword in the product association table.
 
@@ -156,7 +156,7 @@ Each of these metrics help us understand items, and their relationship with othe
 
 ##### Support
 
-Support is extremely intuitive, it simply tells us the percentage of all transactions that contain *both* item A and item B. To calculate this we’d just count up the transactions that include both items, and divide this by the total number of transactions.
+Support is extremely intuitive. It simply tells us the percentage of all transactions that contain *both* item A and item B. To calculate this, we’d just count up the transactions that include both items and divide this by the total number of transactions.
 
 You can think of Support as a baseline metric that helps us understand how common or popular this particular *pair* of items is.
 
@@ -164,13 +164,13 @@ You can think of Support as a baseline metric that helps us understand how commo
 
 ##### Confidence
 
-Confidence takes us a little bit further than Support, and looks more explcitly at the *relationship* between the two items.
+Confidence takes us a little bit further than Support and looks more explicitly at the *relationship* between the two items.
 
-It asks "of all transactions that *included item A*, what proportion also included item B?"
+It asks, "of all transactions that *included item A*, what proportion also included item B?"
 
 In other words, here we are counting up the number of transactions that contained *both items A and B* but then, rather than dividing by *all transactions* like we did for Support, we instead divide this by the *total number of transactions that contained item A*.
 
-A high score for Confidence can mean a strong product relationship, but not always. When one of the items is very popular we can get an inflated score. To help us regulate this, we can look at two further metrics, Expected Confidence and Lift.
+A high score for Confidence can mean a strong product relationship, but not always. When one of the items is very popular, we can get an inflated score. To help us regulate this, we can look at two further metrics, Expected Confidence and Lift.
 
 <br>
 
@@ -184,11 +184,11 @@ This is important as it provides indication of what the Confidence *would be* if
 
 ##### Lift
 
-Lift is the factor by which the Confidence, exceeds the Expected Confidence. In other words, Lift tells us how likely item B is purchased *when item A is purchased*, while *controlling* for how popular item B is.
+Lift is the factor by which the Confidence exceeds the Expected Confidence. In other words, Lift tells us how likely it is that item B is purchased *when item A is purchased*, while *controlling* for how popular item B is.
 
 We calculate Lift by dividing Confidence by Expected Confidence.
 
-A Lift score *greater than 1* indicates that items A and B appear together *more often* than expected, and conversely, a Lift score *less then 1* indicates that items A and B appear together *less often* than expected.
+A Lift score *greater than 1* indicates that items A and B appear together *more often* than expected, and conversely, a Lift score *less than 1* indicates that items A and B appear together *less often* than expected.
 
 <br>
 
@@ -263,7 +263,7 @@ This algorithm allows us to specify the association rules that we want. We set:
 * A minimum & maximum length of 2, meaning we're only focusing on product *pairs* rather than larger sets
 
 ```python
-# apply the apriori algorthm and specify required parameters
+# apply the apriori algorithm and specify required parameters
 apriori_rules = apriori(transactions_list,
                         min_support = 0.003,
                         min_confidence = 0.2,
@@ -292,11 +292,11 @@ support = [rule[1] for rule in apriori_rules]
 confidence = [rule[2][0][2] for rule in apriori_rules]
 lift = [rule[2][0][3] for rule in apriori_rules]
 
-# compile into a single dataframe
+# compile into a single DataFrame
 apriori_rules_df = pd.DataFrame({"product1" : product1,
                                  "product2" : product2,
                                  "support" : support,
-                                 "confidence": confidence,
+                                 "confidence" : confidence,
                                  "lift" : lift})
 ```
 
@@ -311,7 +311,7 @@ A sample of this data (the first 5 product pairs, not in any order) can be seen 
 | American Rose | American Red | 0.016 | 0.403 | 3.575 |
 | … | … | … | … | … |
 
-In the DataFrame we have the two products in the pair, and then the three key metrics; Support, Confidence, and Lift. 
+In the DataFrame we have the two products in the pair, and then the three key metrics: Support, Confidence, and Lift. 
 
 <br>
 <br>
@@ -351,7 +351,7 @@ Interestingly, the strongest relationship exists between two products labelled a
 
 We also see some strong relationships between different French wines, which again is extremely useful for category managers who are thinking about the best way to lay out the products. Having sections by country, rather than necessarily by type, might make it easier for customers to find what they are after.
 
-Another interesting association is between products labelled "small". At this point, we don't know exactly what that means, but it is certainly something to take back to the client as they may be able to make more sense of it, and turn it into an actionable insight.
+Another interesting association is between products labelled "small". At this point, we don't know exactly what that means, but it is certainly something to take back to the client as they may be able to make more sense of it and turn it into an actionable insight.
 
 <br>
 
