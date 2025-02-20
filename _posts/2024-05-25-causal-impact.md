@@ -32,9 +32,9 @@ ___
 
 ### Context <a name="overview-context"></a>
 
-Earlier in the year, our client, a grocery retailer, ran a campaign to promote their new "Delivery Club". This initiative costs a customer \$100 per year for membership, but offers free grocery deliveries rather than the usual cost of \$10 per delivery.
+Earlier in the year, our client, a grocery retailer, ran a campaign to promote their new "Delivery Club". This initiative costs a customer \$100 per year for membership but offers free grocery deliveries rather than the usual cost of \$10 per delivery.
 
-They want to understand if customers who did join the club have increased their spend in the three months following. The hypothesis is that, if customers are not paying for deliveries, they will be tempted to shop more frequently, and hopefully purchase more each time.
+They want to understand if customers who did join the club have increased their spend in the three months following. The hypothesis is that, if customers are not paying for deliveries, they will be tempted to shop more frequently and hopefully purchase more each time.
 
 The aim of this work is to understand, and quantify, the uplift in sales for customers that joined the club, over and above what they *would* have spent had the club not come into existence.
 
@@ -50,13 +50,13 @@ Since Delivery Club membership was open to *all customers*, the control group we
 
 We will take Sales data from the *transactions* table and aggregate this from a customer/transaction/product area level to customer/date level as per the requirements of the algorithm.
 
-We used a 3 month pre-period for the algorithm to model, with a 3 month post-period for the counterfactual.
+We used a 3-month pre-period for the algorithm to model, with a 3-month post-period for the counterfactual.
 
 <br>
 
 ### Results <a name="overview-results"></a>
 
-We saw a 41.1% uplift in sales for those customers that joined the Delivery Club, over and above what we believe they would have spent, had the club not been in existence. This was across the three month post-period, and the uplift was deemed to be statistically significant at a 95% confidence level.
+We saw a 41.1% uplift in sales for those customers that joined the Delivery Club, over and above what we believe they would have spent, had the club not been in existence. This was across the three-month post-period, and the uplift was deemed to be statistically significant at a 95% confidence level.
 
 <br>
 
@@ -105,13 +105,13 @@ Causal Impact is a time series technique, originally developed by Google.
 
 It estimates what *would have happened* (known as a "counterfactual") by applying a model to *comparable data* in a pre-period, and projecting this model onto that data in a post-period. The difference between the actual data and the counterfactual in the post-period, is the estimated impact of the event.
 
-The *comparable data* that we pass in can be a control group, another set of related data, or even multiple sets of related data, but for this approach to work robustly and reliably, this additional data must must adhere to certain rules.
+The *comparable data* that we pass in can be a control group, another set of related data, or even multiple sets of related data, but for this approach to work robustly and reliably, this additional data must adhere to certain rules.
 
 Primarily, it must not be affected by the event that we’re measuring, but of course it must also be predictive of our output, or at least have some relationship with our initial time series data.
 
 So, in the case of a randomised experiment, we could use the control group as our additional set of data.
 
-In the case where we don't have a control group, we need to find other sets of data that meet the aforementoined rules. These must not be affected by the event, but they should have some relationship or correlation with the time series data we are measuring. If we were measuring stock prices, perhaps we could use other stocks that are in a similar industry to us. If we were measuring the sales of a certain section of the grocery store, say health and beauty products, perhaps our second time-series could be the sales of another non-food category in the store.
+In the case where we don't have a control group, we need to find other sets of data that meet the aforementioned rules. These must not be affected by the event, but they should have some relationship or correlation with the time series data we are measuring. If we were measuring stock prices, perhaps we could use other stocks that are in a similar industry to us. If we were measuring the sales of a certain section of the grocery store, say health and beauty products, perhaps our second time-series could be the sales of another non-food category in the store.
 
 Either way, this additional data provides the algorithm insights into the trends of the data over time.
 
@@ -125,7 +125,7 @@ Once we have this counterfactual, we can proceed to calculate the estimation for
 
 #### Application
 
-Here we will utilise a Python package called **pycausalimpact** to apply this algorithm to our data. This will model the relationships, and provide very useful plots and summaries to help us understand the results.
+Here we will utilise a Python package called **pycausalimpact** to apply this algorithm to our data. This will model the relationships and provide very useful plots and summaries to help us understand the results.
 
 <br>
 <br>
@@ -175,7 +175,7 @@ causal_impact_df.index.freq = "D"
 # ensure the impacted group is in the first column (the library expects this)
 causal_impact_df = causal_impact_df[[1,0]]
 
-# rename columns to something lear & meaningful
+# rename columns to something clear and meaningful
 causal_impact_df.columns = ["member", "non_member"]
 ```
 
@@ -243,9 +243,9 @@ The vertical dotted line down the middle of each of the plots above is the date 
 
 **Chart 1: Actual vs. Counterfactual**
 
-The top chart shows the actual data for the impacted group as a black line, in other words the *actual* average daily sales for customers who did go on to sign up to the Delivery Club. You can also see the counterfactual, which is shown with the blue dotted line. The purple area around the blue dotted line represent the confidence intervals around the counterfactual, i.e. the range in which the algorithm believes the prediction should fall in. A wider confidence interval suggests that the model is less sure about it's counterfactual prediction, and this is all taken into account when we look to quantify the actual uplift.
+The top chart shows the actual data for the impacted group as a black line, in other words the *actual* average daily sales for customers who did go on to sign up to the Delivery Club. You can also see the counterfactual, which is shown with the blue dotted line. The purple area around the blue dotted line represents the confidence intervals around the counterfactual, i.e. the range in which the algorithm believes the prediction should fall in. A wider confidence interval suggests that the model is less sure about its counterfactual prediction, and this is all taken into account when we look to quantify the actual uplift.
 
-From an initial glance at this first chart, it does indeed look like there is some increase in daily average spend for customers who joined the club, over and above what the model suggests they would have done, if the club was never in existence. We will look at the actual numbers for this shortly.
+From an initial glance at this first chart, it does indeed look like there is some increase in daily average spend for customers who joined the club, over and above what the model suggests they would have done, if the club were never in existence. We will look at the actual numbers for this shortly.
 
 <br>
 
@@ -259,7 +259,7 @@ What is interesting here is that for the pre-period we see a difference surround
 
 **Chart 3: Cumulative Effects**
 
-The bottom chart shows the cumulative uplift over time. In other words this chart is effectively adding up the Pointwise contributions from the second chart over time. This is very useful as it helps the viewer get a feel for what the total uplift or difference is at any point in time.
+The bottom chart shows the cumulative uplift over time. In other words, this chart is effectively adding up the Pointwise contributions from the second chart over time. This is very useful as it helps the viewer get a feel for what the total uplift or difference is at any point in time.
 
 As we would expect based on the other two charts, there does appear to be a cumulative uplift over time.
 
